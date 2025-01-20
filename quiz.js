@@ -812,52 +812,46 @@ const questions = [
         "explanation": "In IAM, permission to access a resource isn’t granted directly to the end-user. Instead, permissions are grouped into roles, and roles are granted to authenticated members. An IAM policy defines and enforces what roles are granted to which members, and this policy is attached to a resource. When an authenticated member attempts to access a resource, IAM checks the resource’s policy to determine whether the action is permitted."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You developed an application packaged in a container image and you are ready to deploy it on the Google Cloud Platform. You want to deploy the application to a cost-effective GCP service that provides a stable out-of-the-box HTTPS endpoint. The application only receives few client requests per day. What should you do?",
+        "choices": ["Use Google Kubernetes Engine to create a cluster with horizontal pod scaling and cluster autoscaling enabled. Deploy the container image on the infrastructure you just created.", "Use Cloud Run to deploy the container image.", "Use a Compute Engine instance with Cloud IAP enabled to deploy the container image.", "Use App Engine Flexible to deploy the container image."],
+         "answer": "Use Cloud Run to deploy the container image.",
+        "explanation": "The Cloud Run (fully managed) platform allows you to deploy stateless containers without having to worry about the underlying infrastructure. Your workloads are automatically scaled out or in to zero depending on the traffic to your app. You only pay when your app is running, billed to the nearest 100 milliseconds. Each Cloud Run service gets an out-of-the-box stable HTTPS endpoint, with TLS termination handled for you."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "Your company has a live application deployed in a Google App Engine environment. You developed a new version of the application containing several new enhancements and you want to test it first with only 1% of users before entirely switching over to the new version. What should you do?",
+        "choices": ["Use gcloud app create to deploy a new app with --traffic-split flag to split the traffic between the current and new app.", "Use gcloud app deploy to deploy a new version of the app with --traffic-split flag to split the traffic between the current and new version.", "Deploy a new version of the app that includes the enhancements. Configure App Engine to split traffic between the current and new versions.", "Deploy a new application that includes the enhancements. Configure App Engine to split traffic between the two applications."],
+         "answer": "Deploy a new version of the app that includes the enhancements. Configure App Engine to split traffic between the current and new versions.",
+        "explanation": "Google App Engine allows you to split traffic between application versions. Traffic splitting distributes a percentage of traffic to versions of your application. You can split traffic to move 100% of traffic to a single version or to route percentages of traffic to multiple versions. Splitting traffic to two or more versions allows you to conduct A/B testing between your versions and provides control over the pace when rolling out features."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You are the head engineer of a software development organization, and you control the IAM access for everyone. You granted the Project Creator role to all engineering team users, but you don’t want them to link projects to a billing account. It is also essential that the finance team can link projects to a billing account, but they should not have the privilege to access or perform changes on any resource in the organization. What should you do?",
+        "choices": ["Grant the Billing Account User role on the billing account to all of the users in the engineering team.", "Grant the Billing Account User role on the billing account to all of the users in the finance team.", "Grant the Billing Account User role on the billing account as well as the Project Billing Manager role on the organization to all of the users in the finance team.", "Grant the Billing Account User role on the billing account as well as the Project Billing Manager role on the organization to all of the users in the engineering team."],
+         "answer": "Grant the Billing Account User role on the billing account as well as the Project Billing Manager role on the organization to all of the users in the finance team.",
+        "explanation": "Billing Account User – This role has very restricted permissions, so you can grant it broadly, typically in combination with Project Creator. These two roles allow a user to create new projects linked to the billing account on which the role is granted. Project Billing Manager – This role allows a user to attach the project to the billing account, but does not grant any rights over resources. Project Owners can use this role to allow someone else to manage the billing for the project without granting them resource access."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You are working for a tech company that plans to deploy a web application that serves HTTPS requests. You need to build a managed instance group that scales automatically for this application. Part of the requirement is to have the capability to recreate unhealthy virtual instances automatically. What should you do?",
+        "choices": ["In the Instance Group page, create a managed instance group and select Multi-Zone instead of Single-Zone.", "Add the health-check label with a value of https when creating an instance template.", "Build an instance template and add a startup script that sends a message to a Cloud Pub/Sub topic via Cloud Function that triggers recreating the instance if it is unhealthy.", "Configure a health check and set the Protocol settings to HTTPS. Define the appropriate health criteria. Use this health check when you create a managed instance group."],
+         "answer": "Configure a health check and set the Protocol settings to HTTPS. Define the appropriate health criteria. Use this health check when you create a managed instance group.",
+        "explanation": "Managed instance groups maintain high availability of your applications by proactively keeping your instances available, which means in RUNNING state. A MIG automatically recreates an instance that is not RUNNING. However, relying only on VM state may not be sufficient. You may want to recreate instances when an application freezes, crashes, or runs out of memory. The health checks used to monitor MIGs are similar to the health checks used for load balancing, with some differences in behavior. Load balancing health checks help direct traffic away from non-responsive instances and toward healthy instances; these health checks do not cause Compute Engine to recreate instances. On the other hand, managed instance group health checks proactively signal to delete and recreate instances that become UNHEALTHY."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You want to create new VM instances in your existing subnet that has a 255.255.255.240 subnet mask. You noticed that you can’t create an instance anymore because there are no available IP addresses in the subnet. Your instances need to communicate with each other without additional routes. What should you do?",
+        "choices": ["Create a new VPC on the same project. Create a VPC Network Peering connection between the new and current VPC.", "Use gcloud compute networks subnets delete command to delete the current subnet. Create new a bigger subnet using gcloud compute networks subnets create command.", "Use gcloud compute networks subnets expand-ip-range command to expand the IP range.", "Create a new project and use Shared VPC to allow connection between the new and current VPC."],
+         "answer": "Use gcloud compute networks subnets expand-ip-range command to expand the IP range.",
+        "explanation": "You can expand the primary IP range of an existing subnet by modifying its subnet mask, setting the prefix length to a smaller number. The gcloud compute networks subnets expand-ip-range command is used to extend the current IP range of a subnetwork. Expanding the primary IP range of a subnet cannot be undone. You cannot shrink the primary IP range of a subnet. Expand primary IP ranges conservatively; you can always expand them again. Consider IP address space in any networks to which your VPC network is or will be connected before you expand a subnet’s primary IP range."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "Your company has a 5 TB file in Parquet format stored in Google Cloud Storage bucket. A team of analysts, who are only proficient in SQL, needs to temporarily access these files to run ad-hoc queries. You need a cost-effective solution to fulfill their request as soon as possible.What should you do?",
+        "choices": ["Load the data in a new BigQuery table. Use the bq load command, specify PARQUET using the --source_format flag, and include a Cloud Storage URL.", "Load the data in BigTable. Give the analysts the necessary IAM roles to run SQL queries.", "Create external tables in BigQuery. Use the Cloud Storage URL as a data source.", "Import the data to Memorystore to provide quick access to Parquet data in the Cloud Storage bucket."],
+         "answer": "Create external tables in BigQuery. Use the Cloud Storage URL as a data source.",
+        "explanation": "An external data source (also known as a federated data source) is a data source that you can query directly even though the data is not stored in BigQuery. Instead of loading or streaming the data, you create a table that references the external data source. To query a Cloud Storage external data source, provide the Cloud Storage URL path to your data, and create a table that references the data source. The table used to reference the Cloud Storage data source can be a permanent table or a temporary table. It is stated in the scenario that a low-cost and temporary access to Parquet data should be provided. Using the BigQuery temporary external table will satisfy this requirement compared to loading the data to permanent tables that use datasets to store the data. Querying an external data source using a temporary table is useful for one-time, ad-hoc queries over external data, or for extract, transform, and load (ETL) processes."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You have two groups of Compute Engine instances deployed in separate GCP projects. Each group of instances runs on its own VPC. You need to enable network traffic between the two groups. What should you do?",
+        "choices": ["Confirm that both projects belong to a single Organization. Set up a new Shared VPC host project from the first project and send a request to allow the Compute Engine instances from the other project to use this Shared VPC.", "", "", ""],
+         "answer": "Confirm that both projects belong to a single Organization. Set up a new Shared VPC host project from the first project and send a request to allow the Compute Engine instances from the other project to use this Shared VPC.",
+        "explanation": "An organization can use Shared VPC to keep a VPC network in a common host project. Authorized IAM members from other projects in the same organization can create resources that use subnets of the Shared VPC network. Shared VPC allows an organization to connect resources from multiple projects to a common Virtual Private Cloud (VPC) network, so that they can communicate with each other securely and efficiently using internal IPs from that network. When you use Shared VPC, you designate a project as a host project and attach one or more other service projects to it. The VPC networks in the host project are called Shared VPC networks. Eligible resources from service projects can use subnets in the Shared VPC network. "
     },
     {
         "question": "",
