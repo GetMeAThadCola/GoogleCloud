@@ -699,6 +699,155 @@ const questions = [
         "explanation": "The MIG automatic updater lets you safely deploy new versions of software to instances in your MIG and supports a flexible range of rollout scenarios, such as rolling updates and canary updates. You can control the speed and scope of deployment as well as the level of disruption to your service. Use the maxSurge option to configure how many new instances the MIG can create above its targetSize during an automated update. For example, if you set maxSurge to 5, the MIG uses the new instance template to create up to 5 new instances above your target size. Use the maxUnavailable option to configure how many instances are unavailable at any time during an automated update. For example, if you set maxUnavailable to 5, then only 5 instances are taken offline for updating at a time. Use this option to control how disruptive the update is to your service and to control the rate at which the update is deployed."
     },
     {
+        "question": "Your team is building an application hosted on a VM instance in Compute Engine. The application is designed to enhance and resize images. You want your application to be able to upload images on a Cloud Storage bucket. You want to do this with the least number of steps possible without compromising security. What should you do?",
+        "choices": ["Set the Cloud Storage bucket to public and configure the objects to have a randomized suffix in its object name.", "Verify if the VM instance and the bucket have the same region.", "Create a Service Account with roles/storage.objectAdmin (Storage Object Admin) role. Configure the VM instance to use the Service Account.", "Create a Service Account with roles/storage.objectCreator (Storage Object Creator) role. Configure the VM instance to use the Service Account."],
+         "answer": "Create a Service Account with roles/storage.objectCreator (Storage Object Creator) role. Configure the VM instance to use the Service Account.",
+        "explanation": "A service account is a special type of Google account that represents a resource instead of a user to gain access to other services or resources. You can configure a VM instance to use a Service Account to gain access to other services like Google Compute Engine.  To be able to create/upload files in Google Compute Engine, a user or service account should have at least Storage Object Creator (roles/storage.objectCreator) role or with resourcemanager.projects.get, resourcemanager.projects.list, storage.objects.create permissions."
+    },
+    {
+        "question": "Your organization plans to migrate your on-premises environment to the Google Cloud Platform. You have several development teams that use Cassandra databases to store data from their users. You want to set up isolated environments for your development teams that contain Cassandra instances. You need to migrate to GCP as fast as possible, and you want this done with minimal support effort. What should you do?",
+        "choices": ["1. Create a step-by-step guide to install Cassandra on a Compute Engine instance.2. Share the instruction guide to your development teams.", "1. Have your development teams visit the Cloud Marketplace.2. Advise them to launch a Cassandra image from the Cloud Marketplace.", "Provision a Cassandra Compute Engine instance and take a snapshot of it.", "1. Install Cassandra on a Compute Engine instance and take a snapshot. 2. Create Compute Engine instances for your development teams using the newly created snapshot."],
+         "answer": "1. Have your development teams visit the Cloud Marketplace.2. Advise them to launch a Cassandra image from the Cloud Marketplace.",
+        "explanation": "Google Cloud Marketplace lets you quickly deploy functional software packages that run on Google Cloud. Even if you are unfamiliar with services like Compute Engine or Cloud Storage, you can start up a familiar software package without having to manually configure the software, virtual machine (VM) instances, storage, or network settings. You can deploy a software package now, and scale that deployment later when your apps require additional capacity."
+    },
+    {
+        "question": "You are working in a rapidly-growing FinTech company as a Google Cloud Administrator. As your company’s business expands, it needs to accelerate its project deployments in Google Cloud. You want to ensure the deployments are efficient and consistent. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["Use the template from Cloud Foundation Toolkit to create a repeatable Google Cloud environment. Customize the template according to the needs and deploy using Deployment Manager.", "Create a Terraform configuration for each deployment. Automate the project deployment using the same configuration.", "Use Config Connector to deploy resources for the Google Cloud projects.", "Using Cloud Shell, create a script that uses gcloud commands to deploy the environments."],
+         "answer": "Use the template from Cloud Foundation Toolkit to create a repeatable Google Cloud environment. Customize the template according to the needs and deploy using Deployment Manager.",
+        "explanation": "Google Cloud Deployment Manager is an infrastructure deployment service that automates the creation and management of Google Cloud resources. You can use Google Cloud Deployment Manager to create a set of Google Cloud resources and manage them as a unit called a deployment."
+    },
+    {
+        "question": "Your company stores all of its container images on Google Artifact Registry in a project called td-devops. The development team created a Google Kubernetes Engine (GKE) cluster on a separate project and needs to download container images from the td-devops project. What should you do to ensure that Kubernetes can download the images from Artifact Registry securely?",
+        "choices": ["In the Google Cloud Storage, configure the ACLs on each container image stored and provide read-write access to the service account used by the GKE nodes.", "Generate a P12 key for a new service account. Use the generated key as an imagePullSecrets in Kubernetes to access the private registry", "Upon creating the GKE cluster, set the Access Scopes setting under Node Security to Allow Full Access to all Cloud APIs.", "In the td-devops project, assign the Storage Object Viewer IAM role to the service account used by the GKE nodes."],
+         "answer": "In the td-devops project, assign the Storage Object Viewer IAM role to the service account used by the GKE nodes.",
+        "explanation": "Google Artifact Registry manages container images directly without relying on individual Cloud Storage buckets for each image. Instead, Artifact Registry is a unified platform that provides repository-level permissions, allowing more granular access control over specific repositories and images. To enable a Kubernetes Engine (GKE) cluster to access images stored in the Artifact Registry from another project, the appropriate IAM permissions must be set for the service account used by the GKE nodes. In this case, assigning the Artifact Registry Reader or Storage Object Viewer role (depending on the level of access needed) at the repository level in the td-devops project to the GKE service account will allow the nodes to securely pull images as needed. This approach eliminates the need for bucket-specific or object-level permissions associated with Cloud Storage, providing a simpler and more secure method for controlling access to container images."
+    },
+    {
+        "question": "Your company strictly observes the best practice of giving least-privilege access to control the GCP projects and other resources. Your Site Reliability Engineers (SRE) team recently opened a support case to Google Cloud Support. The SREs should be able to grant permission requests from the Google Cloud Support team while working through the case. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["Create a Google group named sre-group. Use the predefined roles/iam.roleAdmin role and assign it to the newly created group.", "Use the predefined roles/iam.roleAdmin role and assign it to the accounts of your SREs", "Create a Google group named sre-group. Use the predefined roles/accessapproval role and assign it to the newly created group.", "Use the predefined roles/iam.organizationRoleAdmin role and assign it to the accounts of your SREs."],
+         "answer": "Create a Google group named sre-group. Use the predefined roles/accessapproval role and assign it to the newly created group.",
+        "explanation": "Google groups can help you manage users at scale. Each member of a Google group inherits the Identity and Access Management (IAM) roles granted to that group. This inheritance means that you can use a group’s membership to manage users’ roles instead of granting IAM roles to individual users."
+    },
+    {
+        "question": "A senior developer in your company is assigned to manage and create service accounts for your company’s Google Cloud projects. You have to make sure that the assigned personnel is granted the least permissions to manage the projects. What should you do?",
+        "choices": ["Grant the roles/iam.serviceAccountAdmin role to the senior developer’s account.", "Grant the roles/iam.serviceAccountKeyAdmin role to the senior developer’s account.", "Grant the roles/iam.serviceAccountUser role to the senior developer’s account.", "Grant the roles/iam.roleAdmin role to the senior developer’s account."],
+         "answer": "Grant the roles/iam.serviceAccountAdmin role to the senior developer’s account.",
+        "explanation": "A role contains a set of permissions that allows you to perform specific actions on Google Cloud resources. To make permissions available to members, including users, groups, and service accounts, you grant roles to the members. A service account is a special kind of account used by an application or a virtual machine (VM) instance, not a person. Applications use service accounts to make authorized API calls, authorized as either the service account itself or as Google Workspace or Cloud Identity users through domain-wide delegation."
+    },
+    {
+        "question": "Your company is in the process of merging with another company that also uses GCP as its cloud infrastructure. Both companies manage hundreds of GCP projects and have their own billing accounts. Your company’s finance officer asked you to consolidate the costs for both GCP Organizations into a single invoice and submit it by tomorrow. What should you do?",
+        "choices": ["Configure a third GCP Organization linked to a new billing account. Migrate the projects of both Organizations into the newly created Organization by creating a support case to Google. Configure the projects to use the newly created billing account.", "Create a BigQuery dataset and configure both Organizations to export their billing data into the same dataset.", "Open a support case to Google to migrate the projects of the other company into your Organization. Link your billing account to your Organization.", "Attach your Organization's billing account to the projects of the other Organization."],
+         "answer": "Attach your Organization's billing account to the projects of the other Organization.",
+        "explanation": "The link between projects and billing accounts is preserved, irrespective of the hierarchy. When you move your existing projects into the organization, they will continue to work and be billed as they used to before the migration, even if the corresponding billing account has not been migrated yet. Similarly, if you move a billing account into the organization, all projects linked to it will continue to work even if they are still outside of the organization. There should be no server downtime or impact as a result of migration."
+    },
+    {
+        "question": "You have a technical report stored in an object in Google Cloud Storage (GCS) that needs to be evaluated by an external auditing firm. The report contains sensitive information, so you decided to limit the object’s access to four hours only. The auditing firm does not own a Google account where you can delegate the necessary privileges to access the object. You must implement a secure approach to do this task and have it done with the fewest possible steps.What should you do?",
+        "choices": ["Generate a signed URL and specify the expiration to four hours. Share the signed URL with the auditing firm.", "Edit the object’s permission to allow allUsers access. Add an object lifecycle policy to delete the object after four hours.", "Provision a new bucket dedicated for the auditing firm. Move the object to the new bucket. Create an object lifecycle policy to remove the object after four hours.", "Set up the storage bucket to host a static website and submit the object’s URL to the auditing firm. Manually delete the object from the Cloud Storage bucket after four hours."],
+         "answer": "Generate a signed URL and specify the expiration to four hours. Share the signed URL with the auditing firm.",
+        "explanation": "A signed URL is a URL that provides limited permission and time to make a request. Signed URLs contain authentication information in their query string, allowing users without credentials to perform specific actions on a resource. When you generate a signed URL, you specify a user or service account which must have sufficient permission to make the request that the signed URL will make. After you generate a signed URL, anyone who possesses it can use the signed URL to perform specified actions, such as reading an object within a specified period of time."
+    },
+    {
+        "question": "You developed a decoupled application that is set to be deployed on a Kubernetes cluster on Google Kubernetes Engine (GKE). You need to be able to run on high IOPS for the application’s high-performance computing and you also need to use disk snapshots as part of your disaster recovery strategy. You used the GCP Pricing Calculator to generate a cost estimate and entered some information regarding your cluster, such as the number of nodes, average days, and average hours. What should you do next?",
+        "choices": ["Enter the number of Local SSDs you want to use. Check the option to add the cost estimate for GKE cluster management.", "Enter the number of Local SSDs you want to use. Fill out Persistent Disk storage and snapshot storage fields.", "Request for quotation from the GCP Cloud Support Team.", "Tick the add GPUs option. Check the option to add the cost estimate for GKE cluster management."],
+         "answer": "Enter the number of Local SSDs you want to use. Fill out Persistent Disk storage and snapshot storage fields.",
+        "explanation": "GKE clusters accrue a management fee, irrespective of cluster size or topology. One zonal (single-zone or multi-zonal) cluster per billing account is free. GKE cluster management fees do not apply to Anthos clusters. Unlike Persistent Disks, Local SSDs are physically attached to the server that hosts your VM instance. This tight coupling offers superior performance, very high input/output operations per second (IOPS), and very low latency compared to persistent disks."
+    },
+
+    {
+        "question": "You have been assigned to launch three new Compute Engine instances in your test environment in GCP. These servers should accept incoming TCP traffic on port 8080 and can be managed using RDP. You want to follow Google-recommended best practices in configuring an instance firewall. What should you do?",
+        "choices": ["Create a firewall rule to allow incoming TCP traffic in ports 8080 and 3389, then leave the firewall target to default.", "Add a network tag for the three instances. Create an ingress firewall rule that allows UDP traffic in ports 8080 and 636, then specify the instance’s network tag as the target tag.", "Create an egress firewall rule using gcloud compute firewall-rules create command and specify the network tags and ports.", "Create a network tag for the three instances. Create an ingress firewall rule that allows TCP traffic in ports 8080 and 3389 then specify the instance’s network tag as target tags."],
+         "answer": "Create a network tag for the three instances. Create an ingress firewall rule that allows TCP traffic in ports 8080 and 3389 then specify the instance’s network tag as target tags.",
+        "explanation": "A tag is simply a character string added to a tags field in a resource, such as Compute Engine virtual machine (VM) instances or instance templates. Tags enable you to make firewall rules and routes applicable to specific VM instances. You can assign network tags to new VMs at the creation time or edit the set of assigned tags at any time later. Modifying network tags of a running VM can be done without it being stopped. Firewall rules are defined at the network level and only apply to the network where they are created; however, the name you choose for each of them must be unique to the project."
+    },
+
+    {
+        "question": "Your manager asked you to confirm the creation time of a specific Google Cloud service account used by the development team. What should you do?",
+        "choices": ["In the Logs Explorer, select Project as the scope and select policy as the log type. Click Run Query.", "In the Logs Explorer, go to Library Queries. Run the query for Service Account creation key logs under the IAM service.", "In the Logs Explorer, select activity as the log type and Service Account as the resource type. Click Stream logs.", "In the Logs Explorer, select activity as the log type and Service Account as the resource type. Click Run Query."],
+         "answer": "In the Logs Explorer, select activity as the log type and Service Account as the resource type. Click Run Query.",
+        "explanation": "Admin Activity audit logs contain log entries for API calls or other actions that modify the configuration or metadata of resources. For example, these logs record when users create VM instances or change Identity and Access Management permissions."
+    },
+
+    {
+        "question": "Your team built a decoupled e-commerce application on a Google Kubernetes Engine (GKE) cluster that runs multiple pods. The nodes on the default node pool run on an n2-standard-2 machine type. You are required to deploy additional pods configured to use n2-highmem-48 machine types. The application serves mission-critical requests, and you need to implement this change without causing any downtime. What should you do?",
+        "choices": ["Using the Cloud Console, run the gcloud container clusters upgrade command. Deploy the additional pods.", "Build a new cluster with a node pool that contains both n2-standard-2 and n2-highmem-48 nodes. Redeploy all the pods used for the application, including the new pods, and delete the old cluster.", "Build a new node pool and specify the nodes to use n2-highmem-48 machine type. Deploy the additional pods.", "Build a new cluster with a node pool that contains n2-highmem-48 nodes. Redeploy all the pods used for the application and delete the old cluster."],
+         "answer": "Build a new node pool and specify the nodes to use n2-highmem-48 machine type. Deploy the additional pods.",
+        "explanation": "A node pool is a group of nodes within a cluster that all have the same configuration. Node pools use a NodeConfig specification. Each node in the pool has a Kubernetes node label, cloud.google.com/gke-nodepool, which has the node pool’s name as its value. A node pool can contain one or multiple nodes. When you create a cluster, the number of nodes and type of nodes that you specify becomes the default node pool. Then, you can add additional custom node pools of different sizes and types to your cluster. All nodes in any given node pool are identical to one another."
+    },
+
+    {
+        "question": "Your company regularly executes a batch job process hosted in an on-premises server which takes around 33 hours in total to complete. The batch job consists of smaller tasks that can be performed offline and can be restarted in case of process interruption. You are assigned to migrate this workload to the Google Cloud Platform and implement a cost-effective solution. What should you do?",
+        "choices": ["Move your workload to a Compute Engine instance. Start and stop the instance in the event of failure.", "Use Google Kubernetes Engine (GKE) to build Preemptible nodes.", "Build an instance template configured to launch a Preemptible VM. Provision a managed instance group (MIG) from the template you just created. Adjust the Target CPU Utilization setting.", "Use Compute Engine Preemptible VMs for your workload."],
+         "answer": "Build an instance template configured to launch a Preemptible VM. Provision a managed instance group (MIG) from the template you just created. Adjust the Target CPU Utilization setting.",
+        "explanation": "Managed instance groups (MIGs) let you operate apps on multiple identical VMs. You can make your workloads scalable and highly available by taking advantage of automated MIG services, including: autoscaling, autohealing, regional (multiple zone) deployment, and automatic updating."
+    },
+
+    {
+        "question": "Your company is having its yearly audit. You need to grant access to a group of auditors who want to view the folders and project hierarchy on your company’s GCP account. You want to follow Google-recommended best practices. What should you do?",
+        "choices": ["Create a group for the auditors. Grant roles/browser role to the group.", "Create a group for the auditors. Grant roles/viewer role to the group.", "Grant roles/browser role to the auditors individually.", "Grant roles/viewer role to the auditors individually."],
+         "answer": "Create a group for the auditors. Grant roles/browser role to the group.",
+        "explanation": "Google Cloud resources are organized hierarchically. Starting from the bottom of the hierarchy, projects are the first level, and they contain other resources. All resources except for organizations have exactly one parent. The Organization is at the top of the hierarchy and does not have a parent."
+    },
+    {
+        "question": "You are developing your product on a Kubernetes cluster in the Google Cloud Platform. You dedicate one Pod for each of your customers, and they are allowed to deploy untrusted code in their respective Pod. Knowing this, you want to make sure that you isolate the Pods from each other to avoid issues. What should you do?",
+        "choices": ["Utilize the cos_containerd image when creating GKE nodes. Add a nodeSelector field to your pod configuration with the value of cloud.google.com/gke-os-distribution: cos_containerd.", "Add a custom node pool and configure the Enable sandbox with gVisor option. Add the runtimeClassName:gvisor parameter to each of your customers’ Pods.", "Whitelist the container images used by your customers' Pods using Binary Authorization.", "Identify security vulnerabilities among the containers used by your customers' Pods using the Container Analysis API."],
+         "answer": "Add a custom node pool and configure the Enable sandbox with gVisor option. Add the runtimeClassName:gvisor parameter to each of your customers’ Pods.",
+        "explanation": "Binary Authorization is a deploy-time security control that ensures only trusted container images are deployed on Google Kubernetes Engine (GKE). Container Analysis API is an implementation of the Grafeas API, which stores and enables querying and retrieval of critical metadata about all of your software artifacts. NodeSelector is the simplest recommended form of node selection constraint. Basically, NodeSelector is a field of PodSpec. It specifies a map of key-value pairs. For the pod to be eligible to run on a node, the node must have each of the indicated key-value pairs as labels. The most common usage is one key-value pair."
+    },
+    {
+        "question": "You are running VMs that are currently reaching the maximum capacity on your on-premises data center. You decided to extend your data center infrastructure to Google Cloud to accommodate new workloads. You have to ensure that the VMs that you provisioned in GCP can communicate directly with on-premises resources via a private IP range. What should you do?",
+        "choices": ["Create a VPC on Google Cloud and configure it as a host for a Shared VPC.", "Provision virtual machines on your on-premises and Google Cloud VPC networks that will serve as bastion hosts. Configure the VMs as proxy servers using public IP addresses.", "Build a custom-mode VPC. Set up VPC Network Peering between your on-premises network and your newly created VPC to establish a connection through a private IP range.", "Set up Cloud VPN between your on-premises network to a VPC network through an IPsec VPN connection."],
+         "answer": "Set up Cloud VPN between your on-premises network to a VPC network through an IPsec VPN connection.",
+        "explanation": "On-premises hosts can reach Google APIs and services by using Cloud VPN or Cloud Interconnect from your on-premises network to Google Cloud. On-premises hosts can send traffic from the following types of source IP addresses:"
+    },
+    {
+        "question": "Your team is planning to move a mission-critical application to GCP. Your team decided to do a lift-and-shift migration strategy and host it in a Google Compute Engine. The application is monolithic and requires a custom number of vCPUs and memory to run efficiently. What should you do?",
+        "choices": ["Launch the VM instance using default settings. Add 2 vCPUs at a time until the application runs smoothly.", "Select Custom as machine type during instance creation. Configure the desired number of vCPUs and memory.", "Utilize the Tau T2D VM to host the application and optimize the workloads.", "Launch two VM instances in separate zones. Enable the Rightsizing Recommendations to resize the virtual machines to the desired number of vCPU and memory."],
+         "answer": "Select Custom as machine type during instance creation. Configure the desired number of vCPUs and memory.",
+        "explanation": "It is stated in the scenario that a custom number of vCPU and memory is required to host the mission-critical application. Google Cloud allows you to set a custom number for vCPUs and memory by selecting Custom as machine type."
+    },
+    {
+        "question": "Your mobile app development company uses Google Workspace to run your regular daily communication and team collaboration. You need to give some of these Google Workspace users access to a newly created GCP project. What should you do?",
+        "choices": ["Generate a CSV file that contains a list of users. Utilize the gcloud tool to convert the CSV into Google Cloud accounts.", "Create a Google group called gcp-console-users@tutorialsdojo.com. Wait for Google Cloud to automatically grant the permissions needed to access the project once users join the newly created group.", "Go to the IAM page and grant the Google Workspace email addresses with appropriate IAM roles to access the project.", "Activate the Cloud Identity API in the GCP Console for your domain."],
+         "answer": "Go to the IAM page and grant the Google Workspace email addresses with appropriate IAM roles to access the project.",
+        "explanation": "In IAM, permission to access a resource isn’t granted directly to the end-user. Instead, permissions are grouped into roles, and roles are granted to authenticated members. An IAM policy defines and enforces what roles are granted to which members, and this policy is attached to a resource. When an authenticated member attempts to access a resource, IAM checks the resource’s policy to determine whether the action is permitted."
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
@@ -746,6 +895,8 @@ const questions = [
          "answer": "",
         "explanation": ""
     },
+    
+
 
 
 
