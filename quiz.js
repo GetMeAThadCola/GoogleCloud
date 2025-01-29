@@ -257,9 +257,9 @@ const questions = [
         "explanation": "Cloud Spanner is a fully managed, mission-critical database service that offers transactional consistency at global scale, so you can elastically scale your workload and pay only for the resources you use. Cloud Spanner is a fully managed, mission-critical database service that offers transactional consistency at global scale, so you can elastically scale your workload and pay only for the resources you use."
     },
     {
-        "question": "Select all basic (primitive) IAM roles in GCP",
+        "question": "Select the non basic (primitive) IAM roles in GCP",
         "choices": ["Admin", "Editor", "Viewer", "Owner"],
-         "answer": ["Viewer", "Owner","Editor"],
+         "answer": "Admin",
         "explanation": "There are several basic roles that existed prior to the introudction of IAM: Owner, Editor and Viewer. These roles are still available in IAM, but they are not considered to be basic roles anymore. They are now considered to be composite roles. The basic roles are: Owner, Editor and Viewer."
     },
     {
@@ -785,6 +785,36 @@ const questions = [
         "choices": ["Utilize the environment variable in the CLI and set the CLOUDSDK_PROXY_USERNAME and CLOUDSDK_PROXY_PASSWORD properties", "Configure a firewall rule to block outgoing traffic to the proxy server, preventing the credentials from being used.", "Encrypt the proxy credentials using SHA-256, save them to a file, and reference the file in the gcloud config set core/custom_ca_certs_file command", "Utilize the commands gcloud config set proxy/username and gcloud config set proxy/password to configure the username and password."],
          "answer": "Utilize the environment variable in the CLI and set the CLOUDSDK_PROXY_USERNAME and CLOUDSDK_PROXY_PASSWORD properties",
         "explanation": "The Google Cloud CLI consists of tools designed to create and manage Google Cloud resources. These tools allow users to perform various common platform tasks either from the command line or through scripts and automation.The Google Cloud CLI adheres to the http_proxy, https_proxy, and no_proxy environment variables defined in your proxy setup. These variables manage the proxy server for HTTP connections, the proxy server for HTTPS connections which is usually more relevant for most Google Cloud CLI commands, and the domains that should bypass the proxy, respectively. Configure your gcloud proxy settings only if you need to use a different proxy. If gcloud proxy settings are specified, they will override the existing proxy configuration, including ignoring the no_proxy setting."
+    },
+    {
+        "question": "You need to update a deployment in Deployment Manager without any resource downtime in the deployment. Which command should you use?",
+        "choices": ["A. gcloud deployment-manager deployments create --config <deployment-config-path>", "B. gcloud deployment-manager deployments update --config <deployment-config-path> ", "C. gcloud deployment-manager resources create --config <deployment-config-path>", "D. gcloud deployment-manager resources update --config <deployment-config-path>"],
+         "answer": "B. gcloud deployment-manager deployments update --config <deployment-config-path> ",
+        "explanation": "B is correct Additional tip, update and create resource is not even a command under deployment management service."
+    },
+    {
+        "question": "You are analyzing Google Cloud Platform service costs from three separate projects. You want to use this information to create service cost estimates by service type, daily and monthly, for the next six months using standard query syntax. What should you do?",
+        "choices": ["A. Export your bill to a Cloud Storage bucket, and then import into Cloud Bigtable for analysis.", "B. Export your bill to a Cloud Storage bucket, and then import into Google Sheets for analysis.", "C. Export your transactions to a local file, and perform analysis with a desktop tool.", "D. Export your bill to a BigQuery dataset, and then write time window-based SQL queries for analysis."],
+         "answer": "D. Export your bill to a BigQuery dataset, and then write time window-based SQL queries for analysis.",
+        "explanation": "Cloud Storage bucket'........'Cloud Bigtable'. Not feasible, mainly because cloud BigTable is not good for Structured Data (or Relational Data on which we can run SQL queries as per the question's requirements). BigTable is better suited for Semi Structured data and NoSQL data."
+    },
+    {
+        "question": "You have a Linux VM that must connect to Cloud SQL. You created a service account with the appropriate access rights. You want to make sure that the VM uses this service account instead of the default Compute Engine service account. What should you do?",
+        "choices": ["A. When creating the VM via the web console, specify the service account under the 'Identity and API Access' section.", "B. Download a JSON Private Key for the service account. On the Project Metadata, add that JSON as the value for the key compute-engine-service- account.", "C. Download a JSON Private Key for the service account. On the Custom Metadata of the VM, add that JSON as the value for the key compute-engine- service-account.", "D. Download a JSON Private Key for the service account. After creating the VM, ssh into the VM and save the JSON under ~/.gcloud/compute-engine-service- account.json."],
+         "answer": "A. When creating the VM via the web console, specify the service account under the 'Identity and API Access' section.",
+        "explanation": "If you want to run the VM as a different identity, or you determine that the instance needs a different set of scopes to call the required APIs, you can change the service account and the access scopes of an existing instance"
+    },
+    {
+        "question": "You have a project for your App Engine application that serves a development environment. The required testing has succeeded and you want to create a new project to serve as your production environment. What should you do?",
+        "choices": ["A. Use gcloud to create the new project, and then deploy your application to the new project.", "B. Use gcloud to create the new project and to copy the deployed application to the new project.", "C. Create a Deployment Manager configuration file that copies the current App Engine deployment into a new project.", "D. Deploy your application again using gcloud and specify the project parameter with the new project name to create the new project."],
+         "answer": "A. Use gcloud to create the new project, and then deploy your application to the new project.",
+        "explanation": "Correct is A.Option B is wrong as the option to use gcloud app cp does not exist.Option C is wrong as Deployment Manager does not copy the application, but allows you to specify all the resources needed for your application in a declarative format using yaml Option D is wrong as gcloud app deploy would not create a new project. The project should be created before usage"
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
     },
     {
         "question": "",
