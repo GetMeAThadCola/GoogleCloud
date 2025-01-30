@@ -931,16 +931,78 @@ const questions = [
         "explanation": "ANSWER A meets the requirement because it creates a single custom VPC with 2 subnets, with each subnet in a different region and with a different CIDR range. This ensures that the production and test VMs are in separate subnets and that they can communicate with each other over Internal IP without creating additional routes. Since the subnets are in different regions, they will also have different internal routing tables, which can help isolate the traffic between the two subnets. This configuration provides the necessary network isolation and connectivity required by the production and test workloads."
     },    
     {
+        "question": "You need to create an autoscaling managed instance group for an HTTPS web application. You want to make sure that unhealthy VMs are recreated. What should you do?",
+        "choices": ["A. Create a health check on port 443 and use that when creating the Managed Instance Group.", "B. Select Multi-Zone instead of Single-Zone when creating the Managed Instance Group.", "C. In the Instance Template, add the label 'health-check'.", "D. In the Instance Template, add a startup script that sends a heartbeat to the metadata server."],
+         "answer": "A. Create a health check on port 443 and use that when creating the Managed Instance Group.",
+        "explanation": "Option B is related to the availability and distribution of instances across multiple zones, but it does not directly address the requirement of recreating unhealthy VMs. Option C is incorrect because labels are not used for configuring health checks in GCP. Option D is an alternative method for health checking, but it is not as straightforward as using the built-in health check functionality provided by GCP for managed instance groups."
+    },    
+    {
+        "question": "Your company has a Google Cloud Platform project that uses BigQuery for data warehousing. Your data science team changes frequently and has few members. You need to allow members of this team to perform queries. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["A. 1. Create an IAM entry for each data scientist's user account. 2. Assign the BigQuery jobUser role to the group.", "B. 1. Create an IAM entry for each data scientist's user account. 2. Assign the BigQuery dataViewer user role to the group.", "C. 1. Create a dedicated Google group in Cloud Identity. 2. Add each data scientist's user account to the group. 3. Assign the BigQuery jobUser role to the group.", "D. 1. Create a dedicated Google group in Cloud Identity. 2. Add each data scientist's user account to the group. 3. Assign the BigQuery dataViewer user role to the group."],
+         "answer": "C. 1. Create a dedicated Google group in Cloud Identity. 2. Add each data scientist's user account to the group. 3. Assign the BigQuery jobUser role to the group.",
+        "explanation": "This approach allows for central management of permissions by adding and removing users from the Google group as needed, rather than individually managing permissions for each user. The jobUser role provides the necessary permissions for running queries in BigQuery, allowing the data science team to perform their tasks without granting unnecessary permissions."
+    },    
+    {
+        "question": "You are given a project with a single Virtual Private Cloud (VPC) and a single subnetwork in the us-central1 region. There is a Compute Engine instance hosting an application in this subnetwork. You need to deploy a new instance in the same project in the europe-west1 region. This new instance needs access to the application. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["A. 1. Create a subnetwork in the same VPC, in europe-west1. 2. Create the new instance in the new subnetwork and use the first instance's private address as the endpoint.", "A. 1. Create a subnetwork in the same VPC, in europe-west1. 2. Create the new instance in the new subnetwork and use the first instance's private address as the endpoint.", "C. 1. Create a subnetwork in the same VPC, in europe-west1. 2. Use Cloud VPN to connect the two subnetworks. 3. Create the new instance in the new subnetwork and use the first instance's private address as the endpoint.", "D. 1. Create a VPC and a subnetwork in europe-west1. 2. Peer the 2 VPCs. 3. Create the new instance in the new subnetwork and use the first instance's private address as the endpoint."],
+         "answer": "A. 1. Create a subnetwork in the same VPC, in europe-west1. 2. Create the new instance in the new subnetwork and use the first instance's private address as the endpoint.",
+        "explanation": "ANSWER A is the correct answer because it follows Google's recommended practices of using a single VPC per project and creating a new subnetwork in the same VPC in the europe-west1 region. This allows the new instance to communicate with the existing instance using its private IP address as the endpoint."
+    },
+    {
+        "question": "You have a website hosted on App Engine standard environment. You want 1% of your users to see a new test version of the website. You want to minimize complexity. What should you do?",
+        "choices": ["A. Deploy the new version in the same application and use the --migrate option.", "B. Deploy the new version in the same application and use the --splits option to give a weight of 99 to the current version and a weight of 1 to the new version.", "C. Create a new App Engine application in the same project. Deploy the new version in that application. Use the App Engine library to proxy 1% of the requests to the new version.", "D. Create a new App Engine application in the same project. Deploy the new version in that application. Configure your network load balancer to send 1% of the traffic to that new application."],
+         "answer": "B. Deploy the new version in the same application and use the --splits option to give a weight of 99 to the current version and a weight of 1 to the new version.",
+        "explanation": "By using the App Engine's traffic splitting feature, we can easily direct a certain percentage of traffic to a specific version of our application. In this case, we want to send 1% of traffic to the new test version and keep the remaining 99% on the current version. This can be achieved by deploying the new version in the same application and using the `--splits` option to give a weight of 99 to the current version and a weight of 1 to the new version. Answer A is incorrect because the `--migrate` option is used for migrating traffic to a new version after it has been fully tested and is ready for full deployment. Answer C is incorrect because it requires additional configuration to proxy requests to the new version, increasing complexity unnecessarily. Answer D is incorrect because it involves configuring a network load balancer, which is not necessary for this use case and adds unnecessary complexity."
+    },
+    {
+        "question": "You have a web application deployed as a managed instance group. You have a new version of the application to gradually deploy. Your web application is currently receiving live web traffic. You want to ensure that the available capacity does not decrease during the deployment. What should you do?",
+        "choices": ["A. Perform a rolling-action start-update with maxSurge set to 0 and maxUnavailable set to 1.", "B. Perform a rolling-action start-update with maxSurge set to 1 and maxUnavailable set to 0.", "C. Create a new managed instance group with an updated instance template. Add the group to the backend service for the load balancer. When all instances in the new managed instance group are healthy, delete the old managed instance group.", "D. Create a new instance template with the new application version. Update the existing managed instance group with the new instance template. Delete the instances in the managed instance group to allow the managed instance group to recreate the instance using the new instance template."],
+         "answer": "B. Perform a rolling-action start-update with maxSurge set to 1 and maxUnavailable set to 0.",
+        "explanation": "Correct option is B. We need to ensure the global capacity remains intact, for that reason we need to establish maxUnavailable to 0. On the other hand, we need to ensure new instances can be created. We do that by establishing the maxSurge to 1. Option C is more expensive and more difficult to set up and option D won't meet requirements since it won't keep global capacity intact."
+    },
+    {
+        "question": "You are building an application that stores relational data from users. Users across the globe will use this application. Your CTO is concerned about the scaling requirements because the size of the user base is unknown. You need to implement a database solution that can scale with your user growth with minimum configuration changes. Which storage solution should you use?",
+        "choices": ["A. Cloud SQL", "B. Cloud Spanner", "C. Cloud Firestore", "D. Cloud Datastore"],
+         "answer": "B. Cloud Spanner",
+        "explanation": "Cloud SQL for small relational data, scaled manually Cloud Spanner for relational data, scaled automatically Cloud Firestore for app-based data(?) Cloud Datastore for non-relational data"
+    },
+    {
+        "question": "You are the organization and billing administrator for your company. The engineering team has the Project Creator role on the organization. You do not want the engineering team to be able to link projects to the billing account. Only the finance team should be able to link a project to a billing account, but they should not be able to make any other changes to projects. What should you do?",
+        "choices": ["A. Assign the finance team only the Billing Account User role on the billing account.", "B. Assign the engineering team only the Billing Account User role on the billing account.", "C. Assign the finance team the Billing Account User role on the billing account and the Project Billing Manager role on the organization. ", "D. Assign the engineering team the Billing Account User role on the billing account and the Project Billing Manager role on the organization."],
+         "answer": "C. Assign the finance team the Billing Account User role on the billing account and the Project Billing Manager role on the organization. ",
+        "explanation": "Project Billing Manager does not allow to make any changes to projects. It's just about linking+unlinking projects to billing accounts On the other hand, the single role billing account user does not grant any right to view projects. Even less likely to link them to any billing account. (see https://cloud.google.com/iam/docs/job-functions/billing The Billing Account User role gives the service account the permissions to enable billing (associate projects with the organization's billing account for all projects in the organization) and thereby permit the service account to enable APIs that require billing to be enabled.). Thus A is not the correct answer."
+    },
+    {
+        "question": "You have an application running in Google Kubernetes Engine (GKE) with cluster autoscaling enabled. The application exposes a TCP endpoint. There are several replicas of this application. You have a Compute Engine instance in the same region, but in another Virtual Private Cloud (VPC), called gce-network, that has no overlapping IP ranges with the first VPC. This instance needs to connect to the application on GKE. You want to minimize effort. What should you do?",
+        "choices": ["A. 1. In GKE, create a Service of type LoadBalancer that uses the application's Pods as backend. 2. Set the service's externalTrafficPolicy to Cluster. 3. Configure the Compute Engine instance to use the address of the load balancer that has been created.", "B. 1. In GKE, create a Service of type NodePort that uses the application's Pods as backend. 2. Create a Compute Engine instance called proxy with 2 network interfaces, one in each VPC. 3. Use iptables on this instance to forward traffic from gce-network to the GKE nodes. 4. Configure the Compute Engine instance to use the address of proxy in gce-network as endpoint.", "C. 1. In GKE, create a Service of type LoadBalancer that uses the application's Pods as backend. 2. Add an annotation to this service: cloud.google.com/load-balancer-type: Internal 3. Peer the two VPCs together. 4. Configure the Compute Engine instance to use the address of the load balancer that has been created.", "D. 1. In GKE, create a Service of type LoadBalancer that uses the application's Pods as backend. 2. Add a Cloud Armor Security Policy to the load balancer that whitelists the internal IPs of the MIG's instances. 3. Configure the Compute Engine instance to use the address of the load balancer that has been created."],
+         "answer": "C. 1. In GKE, create a Service of type LoadBalancer that uses the application's Pods as backend. 2. Add an annotation to this service: cloud.google.com/load-balancer-type: Internal 3. Peer the two VPCs together. 4. Configure the Compute Engine instance to use the address of the load balancer that has been created.",
+        "explanation": "Not A, exposing the service with an external LoadBalancer (externalTrafficPolicy set to Cluster) and not peering VPCs or using an internal load balancer unnecessarily exposes the service to the internet, which is not required for inter-VPC communication and could lead to security concerns. All the details in the question are pushing to answer C."
+    },
+    {
+        "question": "Your organization is a financial company that needs to store audit log files for 3 years. Your organization has hundreds of Google Cloud projects. You need to implement a cost-effective approach for log file retention. What should you do?",
+        "choices": ["A. Create an export to the sink that saves logs from Cloud Audit to BigQuery.", "B. Create an export to the sink that saves logs from Cloud Audit to a Coldline Storage bucket.", "C. Write a custom script that uses logging API to copy the logs from Stackdriver logs to BigQuery.", "D. Export these logs to Cloud Pub/Sub and write a Cloud Dataflow pipeline to store logs to Cloud SQL."],
+         "answer": "B. Create an export to the sink that saves logs from Cloud Audit to a Coldline Storage bucket.",
+        "explanation": "B is correct because Coldline Storage is the perfect service to store audit logs from all the projects and is very cost-efficient as well. Coldline Storage is a very low-cost, highly durable storage service for storing infrequently accessed data."
+    },
+    {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
         "explanation": ""
-    },    {
+    },
+    {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
         "explanation": ""
-    },    {
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
