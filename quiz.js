@@ -985,29 +985,105 @@ const questions = [
         "explanation": "B is correct because Coldline Storage is the perfect service to store audit logs from all the projects and is very cost-efficient as well. Coldline Storage is a very low-cost, highly durable storage service for storing infrequently accessed data."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You want to run a single caching HTTP reverse proxy on GCP for a latency-sensitive website. This specific reverse proxy consumes almost no CPU. You want to have a 30-GB in-memory cache, and need an additional 2 GB of memory for the rest of the processes. You want to minimize cost. How should you run this reverse proxy?",
+        "choices": ["A. Create a Cloud Memorystore for Redis instance with 32-GB capacity.", "B. Run it on Compute Engine, and choose a custom instance type with 6 vCPUs and 32 GB of memory.", "C. Package it in a container image, and run it on Kubernetes Engine, using n1-standard-32 instances as nodes.", "D. Run it on Compute Engine, choose the instance type n1-standard-1, and add an SSD persistent disk of 32 GB."],
+         "answer": "A. Create a Cloud Memorystore for Redis instance with 32-GB capacity.",
+        "explanation": "We are looking for latency-sensitive website What it's good for Memorystore for Redis provides a fast, in-memory store for use cases that require fast, real-time processing of data. From simple caching use cases to real time analytics, Memorystore for Redis provides the performance you need. Caching: Cache is an integral part of modern application architectures. Memorystore for Redis provides low latency access and high throughput for heavily accessed data, compared to accessing the data from a disk based backend store. Session management, frequently accessed queries, scripts, and pages are common examples of caching."
     },
+    {
+        "question": "You are hosting an application on bare-metal servers in your own data center. The application needs access to Cloud Storage. However, security policies prevent the servers hosting the application from having public IP addresses or access to the internet. You want to follow Google-recommended practices to provide the application with access to Cloud Storage. What should you do?",
+        "choices": ["A. 1. Use nslookup to get the IP address for storage.googleapis.com. 2. Negotiate with the security team to be able to give a public IP address to the servers. 3. Only allow egress traffic from those servers to the IP addresses for storage.googleapis.com.", "B. 1. Using Cloud VPN, create a VPN tunnel to a Virtual Private Cloud (VPC) in Google Cloud. 2. In this VPC, create a Compute Engine instance and install the Squid proxy server on this instance. 3. Configure your servers to use that instance as a proxy to access Cloud Storage.", "C. 1. Use Migrate for Compute Engine (formerly known as Velostrata) to migrate those servers to Compute Engine. 2. Create an internal load balancer (ILB) that uses storage.googleapis.com as backend. 3. Configure your new instances to use this ILB as proxy.", "D. 1. Using Cloud VPN or Interconnect, create a tunnel to a VPC in Google Cloud. 2. Use Cloud Router to create a custom route advertisement for 199.36.153.4/30. Announce that network to your on-premises network through the VPN tunnel. 3. In your on-premises network, configure your DNS server to resolve *.googleapis.com as a CNAME to restricted.googleapis.com. "],
+         "answer": "D. 1. Using Cloud VPN or Interconnect, create a tunnel to a VPC in Google Cloud. 2. Use Cloud Router to create a custom route advertisement for 199.36.153.4/30. Announce that network to your on-premises network through the VPN tunnel. 3. In your on-premises network, configure your DNS server to resolve *.googleapis.com as a CNAME to restricted.googleapis.com. ",
+        "explanation": "A. It's bad practice to use nslookup to try find a permanent IP address because IPs can change. That's what DNS is for! Also, the security team aren't going to budge... this is just a silly answer.B. We're getting warmer. Any time a question mentions on-prem and cloud, Google wants you to think about Cloud VPN. This solution might even work, but installing Squid? This is a messy solution to a more simple problem. C. Talk about using a sledge hammer to swat a mosquito. I think this could work, but migrating servers to cloud to solve a simple networking problem? D. Once more Google's favorite Cloud VPN is in the answer. I'm not sure about the networking component of this question."
+    },
+    {
+        "question": "You want to deploy an application on Cloud Run that processes messages from a Cloud Pub/Sub topic. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["A. 1. Create a Cloud Function that uses a Cloud Pub/Sub trigger on that topic. 2. Call your application on Cloud Run from the Cloud Function for every message.", "B. 1. Grant the Pub/Sub Subscriber role to the service account used by Cloud Run. 2. Create a Cloud Pub/Sub subscription for that topic. 3. Make your application pull messages from that subscription.", "C. 1. Create a service account. 2. Give the Cloud Run Invoker role to that service account for your Cloud Run application. 3. Create a Cloud Pub/Sub subscription that uses that service account and uses your Cloud Run application as the push endpoint.", "D. 1. Deploy your application on Cloud Run on GKE with the connectivity set to Internal. 2. Create a Cloud Pub/Sub subscription for that topic. 3. In the same Google Kubernetes Engine cluster as your application, deploy a container that takes the messages and sends them to your application."],
+         "answer": "C. 1. Create a service account. 2. Give the Cloud Run Invoker role to that service account for your Cloud Run application. 3. Create a Cloud Pub/Sub subscription that uses that service account and uses your Cloud Run application as the push endpoint.",
+        "explanation": "You can use Pub/Sub to push messages to the endpoint of your Cloud Run service, where the messages are subsequently delivered to containers as HTTP requests. You cannot use Pub/Sub pull subscriptions because Cloud Run only allocates CPU during the processing of a request."
+    },
+    {
+        "question": "You need to deploy an application, which is packaged in a container image, in a new project. The application exposes an HTTP endpoint and receives very few requests per day. You want to minimize costs. What should you do?",
+        "choices": ["A. Deploy the container on Cloud Run.", "B. Deploy the container on Cloud Run on GKE.", "C. Deploy the container on App Engine Flexible.", "D. Deploy the container on GKE with cluster autoscaling and horizontal pod autoscaling enabled."],
+         "answer": "A. Deploy the container on Cloud Run.",
+        "explanation": "Cloud Run is a fully managed, serverless platform that automatically scales to zero when there are no requests, making it highly cost-efficient for applications with infrequent traffic. It is designed to run containerized applications and exposes HTTP endpoints natively. You only pay for the resources used during request processing, which is ideal for an application that receives very few requests per day.\n\n**Why Not the Other Options?**\n- **B. Cloud Run on GKE**: Requires a Kubernetes cluster, incurring baseline infrastructure costs even when idle.\n- **C. App Engine Flexible**: Has a minimum instance requirement, resulting in costs even without traffic.\n- **D. GKE with autoscaling**: Although it can scale based on demand, it still involves cluster management costs, making it more expensive than a fully serverless solution like Cloud Run.\n\nTherefore, **Cloud Run** is the most cost-effective choice for this scenario."
+    },
+ 
+
+    {   
+        "question": "Your company has an existing GCP organization with hundreds of projects and a billing account. Your company recently acquired another company that also has hundreds of projects and its own billing account. You would like to consolidate all GCP costs of both GCP organizations onto a single invoice. You would like to consolidate all costs as of tomorrow. What should you do?",
+        "choices": [
+            "A. Link the acquired company's projects to your company's billing account.",
+            "B. Configure the acquired company's billing account and your company's billing account to export the billing data into the same BigQuery dataset.",
+            "C. Migrate the acquired company's projects into your company's GCP organization. Link the migrated projects to your company's billing account.",
+            "D. Create a new GCP organization and a new billing account. Migrate the acquired company's projects and your company's projects into the new GCP organization and link the projects to the new billing account."
+        ],
+        "answer": "A. Link the acquired company's projects to your company's billing account.",
+        "explanation": "To consolidate all GCP costs onto a single invoice as of tomorrow, you need to link the acquired company's projects to your company's billing account. This ensures that all charges are aggregated under a single invoice immediately. Migrating projects to a different organization (as suggested in option C) is a complex process and does not immediately affect billing consolidation. Option B only consolidates data in BigQuery but does not change invoicing. Option D involves creating a new organization and billing account, which is unnecessary and time-consuming for this requirement."
+    },
+
+    {
+        "question": "You built an application on Google Cloud that uses Cloud Spanner. Your support team needs to monitor the environment but should not have access to table data. You need a streamlined solution to grant the correct permissions to your support team, and you want to follow Google-recommended practices. What should you do?",
+        "choices": [
+            "A. Add the support team group to the roles/monitoring.viewer role.",
+            "B. Add the support team group to the roles/spanner.databaseUser role.",
+            "C. Add the support team group to the roles/spanner.databaseReader role.",
+            "D. Add the support team group to the roles/stackdriver.accounts.viewer role."
+        ],
+        "answer": "A. Add the support team group to the roles/monitoring.viewer role.",
+        "explanation": "The `roles/monitoring.viewer` role grants read-only access to monitoring and logging data in Cloud Monitoring, allowing the support team to monitor the environment without accessing actual table data. This follows the principle of least privilege, ensuring the team can observe system performance without modifying or viewing sensitive database contents.\n\n**Why Not the Other Options?**\n- **B. roles/spanner.databaseUser**: Grants permissions to execute queries and modify schema, which is more than needed.\n- **C. roles/spanner.databaseReader**: Grants read access to table data, which is not required for monitoring purposes.\n- **D. roles/stackdriver.accounts.viewer**: This role provides access to Stackdriver billing accounts and settings but does not grant monitoring access to Cloud Spanner.\n\nThus, the correct answer is **A. roles/monitoring.viewer**."
+    },
+    {
+        "question": "For analysis purposes, you need to send all the logs from all of your Compute Engine instances to a BigQuery dataset called platform-logs. You have already installed the Cloud Logging agent on all the instances. You want to minimize cost. What should you do?",
+        "choices": [
+            "A. 1. Give the BigQuery Data Editor role on the platform-logs dataset to the service accounts used by your instances. 2. Update your instances' metadata to add the following value: logs-destination: bq://platform-logs.",
+            "B. 1. In Cloud Logging, create a logs export with a Cloud Pub/Sub topic called logs as a sink. 2. Create a Cloud Function that is triggered by messages in the logs topic. 3. Configure that Cloud Function to drop logs that are not from Compute Engine and to insert Compute Engine logs in the platform-logs dataset.",
+            "C. 1. In Cloud Logging, create a filter to view only Compute Engine logs. 2. Click Create Export. 3. Choose BigQuery as Sink Service, and the platform-logs dataset as Sink Destination.",
+            "D. 1. Create a Cloud Function that has the BigQuery User role on the platform-logs dataset. 2. Configure this Cloud Function to create a BigQuery Job that executes this query: INSERT INTO dataset.platform-logs (timestamp, log) SELECT timestamp, log FROM compute.logs WHERE timestamp > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) 3. Use Cloud Scheduler to trigger this Cloud Function once a day."
+        ],
+        "answer": "C. 1. In Cloud Logging, create a filter to view only Compute Engine logs. 2. Click Create Export. 3. Choose BigQuery as Sink Service, and the platform-logs dataset as Sink Destination.",
+        "explanation": "The most cost-effective and efficient way to send Compute Engine logs to BigQuery is by using **Cloud Logging exports**. This method allows logs to be directly exported to BigQuery without additional infrastructure costs or custom processing.\n\n**Why Not the Other Options?**\n- **A. Updating instance metadata**: There is no such feature where instances can directly send logs to BigQuery via metadata settings.\n- **B. Using Cloud Pub/Sub and Cloud Functions**: This approach adds unnecessary complexity and costs associated with Pub/Sub and Cloud Functions execution.\n- **D. Using Cloud Scheduler and Cloud Functions**: This approach requires periodic execution of a BigQuery job, adding complexity and delays in log ingestion.\n\nThus, **Option C** is the best approach, as it directly exports logs from Cloud Logging to BigQuery in real-time with minimal cost."
+    },
+    {
+        "question": "You are using Deployment Manager to create a Google Kubernetes Engine cluster. Using the same Deployment Manager deployment, you also want to create a DaemonSet in the kube-system namespace of the cluster. You want a solution that uses the fewest possible services. What should you do?",
+        "choices": [
+            "A. Add the cluster's API as a new Type Provider in Deployment Manager, and use the new type to create the DaemonSet.",
+            "B. Use the Deployment Manager Runtime Configurator to create a new Config resource that contains the DaemonSet definition.",
+            "C. With Deployment Manager, create a Compute Engine instance with a startup script that uses kubectl to create the DaemonSet.",
+            "D. In the cluster's definition in Deployment Manager, add a metadata that has kube-system as key and the DaemonSet manifest as value."
+        ],
+        "answer": "A. Add the cluster's API as a new Type Provider in Deployment Manager, and use the new type to create the DaemonSet.",
+        "explanation": "The most efficient and integrated way to deploy both a Google Kubernetes Engine (GKE) cluster and a DaemonSet using Deployment Manager is to define the Kubernetes API as a **Type Provider** in Deployment Manager. This allows Deployment Manager to create and manage Kubernetes resources (such as a DaemonSet) directly within the same deployment.\n\n**Why Not the Other Options?**\n- **B. Runtime Configurator**: While it can store configurations, it does not natively interact with Kubernetes resources or apply them automatically.\n- **C. Compute Engine instance with startup script**: This is an indirect method that requires extra resources (a VM instance), making it inefficient.\n- **D. Adding metadata to the cluster definition**: Metadata keys do not support direct deployment of Kubernetes resources like a DaemonSet.\n\nThus, **Option A** is the best solution as it directly integrates Deployment Manager with the Kubernetes API, following best practices and minimizing additional services."
+    },
+    {
+        "question": "You are building an application that will run in your data center. The application will use Google Cloud Platform (GCP) services like AutoML. You created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises environment. What should you do?",
+        "choices": [
+            "A. Use service account credentials in your on-premises application.",
+            "B. Use gcloud to create a key file for the service account that has appropriate permissions.",
+            "C. Set up direct interconnect between your data center and Google Cloud Platform to enable authentication for your on-premises applications.",
+            "D. Go to the IAM & admin console, grant a user account permissions similar to the service account permissions, and use this user account for authentication from your data center."
+        ],
+        "answer": "B. Use gcloud to create a key file for the service account that has appropriate permissions.",
+        "explanation": "The best approach to authenticate an on-premises application to Google Cloud APIs like AutoML is to use a **service account key file**. This allows your application to securely authenticate using the service account’s credentials.\n\n**Steps:**\n1. Use `gcloud iam service-accounts keys create` to generate a key file.\n2. Store the key securely on your on-premises system.\n3. Set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to the key file in your application.\n\n**Why Not the Other Options?**\n- **A. Use service account credentials in your on-premises application**: This is a vague answer. The proper way is to use a key file, as described in option B.\n- **C. Set up direct interconnect**: This is unnecessary for authentication; interconnect only provides private networking, not authentication services.\n- **D. Use a user account for authentication**: This is against best practices because user credentials are not designed for automated services and could lead to security risks.\n\nThus, **Option B** is the correct answer as it follows Google's best practices for service account authentication."
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
         "explanation": ""
     },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
+
 
 // 50 Question on Exam topics
 
