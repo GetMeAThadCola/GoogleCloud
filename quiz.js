@@ -1085,7 +1085,7 @@ const questions = [
     },
 
 
-// 50 Question on Exam topics
+// 70 Question on Exam topics
 
 
 
