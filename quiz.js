@@ -1085,7 +1085,7 @@ const questions = [
     },
 
 
-// 70 Question on Exam topics
+// Exam Topic Limit Reached
 
 
 
