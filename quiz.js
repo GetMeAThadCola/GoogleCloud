@@ -817,16 +817,137 @@ const questions = [
         "explanation": "Some typical uses of a DaemonSet are:running a cluster storage daemon on every node running a logs collection daemon on every node running a node monitoring daemon on every node"
     },
     {
+        "question": "You want to send and consume Cloud Pub/Sub messages from your App Engine application. The Cloud Pub/Sub API is currently disabled. You will use a service account to authenticate your application to the API. You want to make sure your application can use Cloud Pub/Sub. What should you do?",
+        "choices": ["A. Enable the Cloud Pub/Sub API in the API Library on the GCP Console. ", "B. Rely on the automatic enablement of the Cloud Pub/Sub API when the Service Account accesses it.", "C. Use Deployment Manager to deploy your application. Rely on the automatic enablement of all APIs used by the application being deployed.", "D. Grant the App Engine Default service account the role of Cloud Pub/Sub Admin. Have your application enable the API on the first connection to Cloud Pub/ Sub."],
+         "answer": "A. Enable the Cloud Pub/Sub API in the API Library on the GCP Console. ",
+        "explanation": "Since the Cloud Pub/Sub API is currently disabled, the first step is to enable it. This can be done through the API Library on the GCP Console. Once the API is enabled, the service account can be used to authenticate the App Engine application to the Cloud Pub/Sub API."
+    },
+    {
+        "question": "You are deploying an application to a Compute Engine VM in a managed instance group. The application must be running at all times, but only a single instance of the VM should run per GCP project. How should you configure the instance group?",
+        "choices": ["A. Set autoscaling to On, set the minimum number of instances to 1, and then set the maximum number of instances to 1.", "B. Set autoscaling to Off, set the minimum number of instances to 1, and then set the maximum number of instances to 1.", "C. Set autoscaling to On, set the minimum number of instances to 1, and then set the maximum number of instances to 2.", "D. Set autoscaling to Off, set the minimum number of instances to 1, and then set the maximum number of instances to 2."],
+         "answer": "A. Set autoscaling to On, set the minimum number of instances to 1, and then set the maximum number of instances to 1.",
+        "explanation": "A. Set autoscaling to On, set the minimum number of instances to 1, and then set the maximum number of instances to 1."
+    },
+    {
+        "question": "You want to verify the IAM users and roles assigned within a GCP project named my-project. What should you do?",
+        "choices": ["A. Run gcloud iam roles list. Review the output section.", "B. Run gcloud iam service-accounts list. Review the output section.", "C. Navigate to the project and then to the IAM section in the GCP Console. Review the members and roles.", "D. Navigate to the project and then to the Roles section in the GCP Console. Review the roles and status."],
+         "answer": "C. Navigate to the project and then to the IAM section in the GCP Console. Review the members and roles.",
+        "explanation": "Correct answer is C as IAM section provides the list of both Members and Roles.Option A is wrong as it would provide information about the roles only.Option B is wrong as it would provide only the service accounts.Option D is wrong as it would provide information about the roles only."
+    },
+    {
+        "question": "You need to create a new billing account and then link it with an existing Google Cloud Platform project. What should you do?",
+        "choices": ["A. Verify that you are Project Billing Manager for the GCP project. Update the existing project to link it to the existing billing account.", "B. Verify that you are Project Billing Manager for the GCP project. Create a new billing account and link the new billing account to the existing project.", "C. Verify that you are Billing Administrator for the billing account. Create a new project and link the new project to the existing billing account.", "D. Verify that you are Billing Administrator for the billing account. Update the existing project to link it to the existing billing account."],
+         "answer": "B. Verify that you are Project Billing Manager for the GCP project. Create a new billing account and link the new billing account to the existing project.",
+        "explanation": "Option B is the accurate approach. As a Project Billing Manager, you have the authority to create a new billing account and link it to an existing Google Cloud Platform project. This way, you maintain control over both the project and its associated billing."
+    },    
+    {
+        "question": "You have one project called proj-sa where you manage all your service accounts. You want to be able to use a service account from this project to take snapshots of VMs running in another project called proj-vm. What should you do?",
+        "choices": ["A. Download the private key from the service account, and add it to each VMs custom metadata.", "B. Download the private key from the service account, and add the private key to each VM's SSH keys.", "C. Grant the service account the IAM Role of Compute Storage Admin in the project called proj-vm.", "D. When creating the VMs, set the service account's API scope for Compute Engine to read/write."],
+         "answer": "C. Grant the service account the IAM Role of Compute Storage Admin in the project called proj-vm.",
+        "explanation": "To illustrate how we can use a service account among projects, let’s first start with an existing service account in one of our GCP projects: Navigate to IAM & Admin → Service accounts in the project you have created the service account in initially (let’s name it project A) and mark the email down, as it will be needed later on. Go to the destination project, i.e. the one that we want to grant the service account, in IAM & Admin → IAM and click on “ADD” at the top Use the email you noted at step 1 and grant the role of your choice (e.g. Kubernetes Engine Cluster Viewer, or a custom role if needed) Voila! You have created a service account in project A and granted it permissions in another project! Steps 2 and 3 can be repeated for as many projects as you would like to grant the service account access to 🚀"
+    },    
+    {
+        "question": "You created a Google Cloud Platform project with an App Engine application inside the project. You initially configured the application to be served from the us- central region. Now you want the application to be served from the asia-northeast1 region. What should you do?",
+        "choices": ["A. Change the default region property setting in the existing GCP project to asia-northeast1.", "B. Change the region property setting in the existing App Engine application from us-central to asia-northeast1.", "C. Create a second App Engine application in the existing GCP project and specify asia-northeast1 as the region to serve your application.", "D. Create a new GCP project and create an App Engine application inside this new project. Specify asia-northeast1 as the region to serve your application."],
+         "answer": "D. Create a new GCP project and create an App Engine application inside this new project. Specify asia-northeast1 as the region to serve your application.",
+        "explanation": "Option D is correct, as there can be only one App Engine application inside a project . C is incorrect, as GCP can't have two app engine applications..Each Google Cloud project can contain only a single App Engine application, and once created you cannot change the location of your App Engine application"
+    },    
+    {
+        "question": "You need to grant access for three users so that they can view and edit table data on a Cloud Spanner instance. What should you do?",
+        "choices": ["A. Run gcloud iam roles describe roles/spanner.databaseUser. Add the users to the role.", "B. Run gcloud iam roles describe roles/spanner.databaseUser. Add the users to a new group. Add the group to the role. ", "C. Run gcloud iam roles describe roles/spanner.viewer - -project my-project. Add the users to the role.", "D. Run gcloud iam roles describe roles/spanner.viewer - -project my-project. Add the users to a new group. Add the group to the role."],
+         "answer": "B. Run gcloud iam roles describe roles/spanner.databaseUser. Add the users to a new group. Add the group to the role. ",
+        "explanation": "I think it should be B, setup a group first are suggested way from Google."
+    },    
+    {
+        "question": "You create a new Google Kubernetes Engine (GKE) cluster and want to make sure that it always runs a supported and stable version of Kubernetes. What should you do?",
+        "choices": ["A. Enable the Node Auto-Repair feature for your GKE cluster.", "B. Enable the Node Auto-Upgrades feature for your GKE cluster", "C. Select the latest available cluster version for your GKE cluster.", "D. Select ג€Container-Optimized OS (cos)ג€ as a node image for your GKE cluster."],
+         "answer": "B. Enable the Node Auto-Upgrades feature for your GKE cluster.",
+        "explanation": "Answer B is correct. Google Kubernetes Engine (GKE) supports multiple versions of Kubernetes, and new versions are regularly released. To ensure that your GKE cluster runs a supported and stable version of Kubernetes, it is recommended to enable the Node Auto-Upgrades feature. This feature automatically upgrades the Kubernetes version of each node in the cluster to the latest stable version."
+    },    
+    {
+        "question": "You have an instance group that you want to load balance. You want the load balancer to terminate the client SSL session. The instance group is used to serve a public web application over HTTPS. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["A. Configure an HTTP(S) load balancer. ", "B. Configure an internal TCP load balancer.", "C. Configure an external SSL proxy load balancer.", "D. Configure an external TCP proxy load balancer."],
+         "answer": "A. Configure an HTTP(S) load balancer. ",
+        "explanation": "In opt B, Internal tcp only deals with ip and ports in a vpc i.e 'internally' and does not deal with http/s or ssl/tls In opt C external SSL can serve application over https but not the ssl termination part. In opt D external TCP only deals with web application over HTTP and not the secured one. To top it off, it can't even terminate SSL session. Hence the only viable option is HTTP(S) load balancer."
+    },    
+    {
+        "question": "You have 32 GB of data in a single file that you need to upload to a Nearline Storage bucket. The WAN connection you are using is rated at 1 Gbps, and you are the only one on the connection. You want to use as much of the rated 1 Gbps as possible to transfer the file rapidly. How should you upload the file?",
+        "choices": ["A. Use the GCP Console to transfer the file instead of gsutil.", "B. Enable parallel composite uploads using gsutil on the file transfer.", "C. Decrease the TCP window size on the machine initiating the transfer.", "D. Change the storage class of the bucket from Nearline to Multi-Regional."],
+         "answer": "B. Enable parallel composite uploads using gsutil on the file transfer.",
+        "explanation": "This option is correct because parallel composite uploads can break down a large file into smaller components, upload them in parallel, and recombine them into a single object in the cloud. This method takes advantage of the available bandwidth more efficiently than serial uploads, as it can simultaneously transmit multiple parts of the file over the network. The gsutil tool has a -o option that allows enabling of parallel composite uploads."
+    },    
+    {
+        "question": "You need to refactor this configuration so that the database password is not stored in plain text. You want to follow Google-recommended practices. What should you do?",
+        "choices": ["A. Store the database password inside the Docker image of the container, not in the YAML file.", "B. Store the database password inside a Secret object. Modify the YAML file to populate the DB_PASSWORD environment variable from the Secret.", "C. Store the database password inside a ConfigMap object. Modify the YAML file to populate the DB_PASSWORD environment variable from the ConfigMap.", "D. Store the database password in a file inside a Kubernetes persistent volume, and use a persistent volume claim to mount the volume to the container."],
+         "answer": "B. Store the database password inside a Secret object. Modify the YAML file to populate the DB_PASSWORD environment variable from the Secret.",
+        "explanation": "it is good practice to use Secrets for confidential data (like API keys) and ConfigMaps for non-confidential data (like port numbers). B is correct."
+    },    
+    {
+        "question": "You are running an application on multiple virtual machines within a managed instance group and have autoscaling enabled. The autoscaling policy is configured so that additional instances are added to the group if the CPU utilization of instances goes above 80%. VMs are added until the instance group reaches its maximum limit of five VMs or until CPU utilization of instances lowers to 80%. The initial delay for HTTP health checks against the instances is set to 30 seconds.The virtual machine instances take around three minutes to become available for users. You observe that when the instance group autoscales, it adds more instances then necessary to support the levels of end-user traffic. You want to properly maintain instance group sizes when autoscaling. What should you do?",
+        "choices": ["A. Set the maximum number of instances to 1.", "B. Decrease the maximum number of instances to 3.", "C. Use a TCP health check instead of an HTTP health check.", "D. Increase the initial delay of the HTTP health check to 200 seconds."],
+         "answer": "D. Increase the initial delay of the HTTP health check to 200 seconds.",
+        "explanation": "If is going to be taking 180 seconds for additional vm to be avaliable then health check of 30second interval would not be ideal.Over provisioning will occur."
+    },    
+    {
+        "question": "You need to select and configure compute resources for a set of batch processing jobs. These jobs take around 2 hours to complete and are run nightly. You want to minimize service costs. What should you do?",
+        "choices": ["A. Select Google Kubernetes Engine. Use a single-node cluster with a small instance type.", "B. Select Google Kubernetes Engine. Use a three-node cluster with micro instance types.", "C. Select Compute Engine. Use preemptible VM instances of the appropriate standard machine type.", "D. Select Compute Engine. Use VM instance types that support micro bursting."],
+         "answer": "C. Select Compute Engine. Use preemptible VM instances of the appropriate standard machine type.",
+        "explanation": "Preemptible VM instances offer the lowest cost for batch processing jobs in the Google Cloud Platform. Preemptible VM instances are computed instances that can run for a maximum of 24 hours and provide no availability guarantees. Preemptible VM instances are up to 80% cheaper than standard compute instances, making them an excellent choice for batch-processing workloads that can be interrupted"
+    },    
+    {
+        "question": "You recently deployed a new version of an application to App Engine and then discovered a bug in the release. You need to immediately revert to the prior version of the application. What should you do?",
+        "choices": ["A. Run gcloud app restore.", "B. On the App Engine page of the GCP Console, select the application that needs to be reverted and click Revert.", "C. On the App Engine Versions page of the GCP Console, route 100% of the traffic to the previous version.", "D. Deploy the original version as a separate application. Then go to App Engine settings and split traffic between applications so that the original version serves 100% of the requests."],
+         "answer": "C. On the App Engine Versions page of the GCP Console, route 100% of the traffic to the previous version.",
+        "explanation": "Option A is wrong as gcloud app restore was used for backup and restore and has been deprecated.Option B is wrong as there is no application revert functionality available.Option D is wrong as App Engine maintains version and need not be redeployed."
+    },    
+    {
+        "question": "You deployed an App Engine application using gcloud app deploy, but it did not deploy to the intended project. You want to find out why this happened and where the application deployed. What should you do?",
+        "choices": ["A. Check the app.yaml file for your application and check project settings.", "B. Check the web-application.xml file for your application and check project settings.", "C. Go to Deployment Manager and review settings for deployment of applications.", "D. Go to Cloud Shell and run gcloud config list to review the Google Cloud configuration used for deployment."],
+         "answer": "D. Go to Cloud Shell and run gcloud config list to review the Google Cloud configuration used for deployment.",
+        "explanation": "I would opt option D : as it would help to check the config details and Option A is not correct, as app.yaml would have only the runtime and script to run parameters and not the Project details"
+    },    
+    {
+        "question": "You want to configure 10 Compute Engine instances for availability when maintenance occurs. Your requirements state that these instances should attempt to automatically restart if they crash. Also, the instances should be highly available including during system maintenance. What should you do?",
+        "choices": ["A. Create an instance template for the instances. Set the 'Automatic Restart' to on. Set the 'On-host maintenance' to Migrate VM instance. Add the instance template to an instance group. ", "B. Create an instance template for the instances. Set 'Automatic Restart' to off. Set 'On-host maintenance' to Terminate VM instances. Add the instance template to an instance group.", "C. Create an instance group for the instances. Set the 'Autohealing' health check to healthy (HTTP).", "D. Create an instance group for the instance. Verify that the 'Advanced creation options' setting for 'do not retry machine creation' is set to off."],
+         "answer": "A. Create an instance template for the instances. Set the 'Automatic Restart' to on. Set the 'On-host maintenance' to Migrate VM instance. Add the instance template to an instance group. ",
+        "explanation": "A is correct because automatic restart will restart the instance if it crashes and setting on host maintenance to migrate the instance will not let the application go down during maintenance. It fulfills the requirements of automatically restarting the instances if they crash and ensuring that they are not lost during system maintenance activity. By setting the 'Automatic Restart' to on, the instances will attempt to automatically restart if they crash. By setting the 'On-host maintenance' to Migrate VM instance, the instances will be migrated to another host during system maintenance, preventing any downtime."
+    },    
+    {
+        "question": "You host a static website on Cloud Storage. Recently, you began to include links to PDF files on this site. Currently, when users click on the links to these PDF files, their browsers prompt them to save the file onto their local system. Instead, you want the clicked PDF files to be displayed within the browser window directly, without prompting the user to save the file locally. What should you do?",
+        "choices": ["A. Enable Cloud CDN on the website frontend.", "B. Enable 'Share publicly' on the PDF file objects.", "C. Set Content-Type metadata to application/pdf on the PDF file objects.", "D. Add a label to the storage bucket with a key of Content-Type and value of application/pdf."],
+         "answer": "C. Set Content-Type metadata to application/pdf on the PDF file objects.",
+        "explanation": "Explanation: The Content-Type metadata indicates the media type of the content and helps the browser understand how to handle the file. In this case, by setting the Content-Type metadata of the PDF files to application/pdf, you're informing the browser that the files are in PDF format, and the browser will attempt to display them directly within the browser window, rather than prompting the user to download them."
+    },    
+    {
+        "question": "You have a virtual machine that is currently configured with 2 vCPUs and 4 GB of memory. It is running out of memory. You want to upgrade the virtual machine to have 8 GB of memory. What should you do?",
+        "choices": ["A. Rely on live migration to move the workload to a machine with more memory.", "B. Use gcloud to add metadata to the VM. Set the key to required-memory-size and the value to 8 GB.", "C. Stop the VM, change the machine type to n1-standard-8, and start the VM.", "D. Stop the VM, increase the memory to 8 GB, and start the VM. "],
+         "answer": "D. Stop the VM, increase the memory to 8 GB, and start the VM. ",
+        "explanation": "D is correct. If you pay attention to the question, option C mentions n1-standard-8. That instance type has 8vCPUs and 30 GB RAM, and we only need 8GB. On top of that, it is possible to use custom machine type to adjust current VM RAM to the value we need."
+    },    
+    {
+        "question": "You have production and test workloads that you want to deploy on Compute Engine. Production VMs need to be in a different subnet than the test VMs. All the VMs must be able to reach each other over Internal IP without creating additional routes. You need to set up VPC and the 2 subnets. Which configuration meets these requirements?",
+        "choices": ["A. Create a single custom VPC with 2 subnets. Create each subnet in a different region and with a different CIDR range.", "B. Create a single custom VPC with 2 subnets. Create each subnet in the same region and with the same CIDR range.", "C. Create 2 custom VPCs, each with a single subnet. Create each subnet in a different region and with a different CIDR range.", "D. Create 2 custom VPCs, each with a single subnet. Create each subnet in the same region and with the same CIDR range."],
+         "answer": "A. Create a single custom VPC with 2 subnets. Create each subnet in a different region and with a different CIDR range.",
+        "explanation": "ANSWER A meets the requirement because it creates a single custom VPC with 2 subnets, with each subnet in a different region and with a different CIDR range. This ensures that the production and test VMs are in separate subnets and that they can communicate with each other over Internal IP without creating additional routes. Since the subnets are in different regions, they will also have different internal routing tables, which can help isolate the traffic between the two subnets. This configuration provides the necessary network isolation and connectivity required by the production and test workloads."
+    },    
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },    {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
         "explanation": ""
     },
 
-
-    
-
-
+// 50 Question on Exam topics
 
 
 
