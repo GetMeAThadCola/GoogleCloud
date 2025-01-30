@@ -1066,17 +1066,79 @@ const questions = [
         "answer": "B. Use gcloud to create a key file for the service account that has appropriate permissions.",
         "explanation": "The best approach to authenticate an on-premises application to Google Cloud APIs like AutoML is to use a **service account key file**. This allows your application to securely authenticate using the service account’s credentials.\n\n**Steps:**\n1. Use `gcloud iam service-accounts keys create` to generate a key file.\n2. Store the key securely on your on-premises system.\n3. Set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to the key file in your application.\n\n**Why Not the Other Options?**\n- **A. Use service account credentials in your on-premises application**: This is a vague answer. The proper way is to use a key file, as described in option B.\n- **C. Set up direct interconnect**: This is unnecessary for authentication; interconnect only provides private networking, not authentication services.\n- **D. Use a user account for authentication**: This is against best practices because user credentials are not designed for automated services and could lead to security risks.\n\nThus, **Option B** is the correct answer as it follows Google's best practices for service account authentication."
     },
+    {
+        "question": "In your data center you want to deploy an application. This application will use GCP services like AutoML. For this you created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises enviroment. What should you do?",
+        "choices": ["You should go to the IAM & Admin console, grant a user account permissions similar to the service account permissions, and use this user account for authentication from your data center", "You should set up a direct interconnect between your data center and GCP to enable authentication for your on premises applications", "You should use service account credentials in your on-premises application", "You should use gcloud to create a key file for the service account that has appropriate permissions"],
+         "answer": "You should use gcloud to create a key file for the service account that has appropriate permissions",
+        "explanation": "The best approach to authenticate an on-premises application to Google Cloud APIs like AutoML is to use a **service account key file**. This allows your application to securely authenticate using the service account’s credentials.\n\n**Steps:**\n1. Use `gcloud iam service-accounts keys create` to generate a key file.\n2. Store the key securely on your on-premises system.\n3. Set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to the key file in your application.\n\n**Why Not the Other Options?**\n- **A. Use service account credentials in your on-premises application**: This is a vague answer. The proper way is to use a key file, as described in option B.\n- **C. Set up direct interconnect**: This is unnecessary for authentication; interconnect only provides private networking, not authentication services.\n- **D. Use a user account for authentication**: This is against best practices because user credentials are not designed for automated services and could lead to security risks.\n\nThus, **Option B** is the correct answer as it follows Google's best practices for service account authentication."
+    },
+    {
+        "question": "Which of the following solutions gives you the ability to administer projects from a browser-based command line ?",
+        "choices": ["IAM & Admin", "Cloud CMD", "Cloud 9", "Cloud Shell"],
+         "answer": "Cloud Shell",
+        "explanation": "Cloud Shell is an interactive shell enviroment for Google Cloud that makes it easy for you to learn and experiment with Google Cloud and manage your projects and resources from your web browser"
+    },
+    {
+        "question": "A budget is set at 1000$ and an alert is set at 100%. What happens when the full amount is spent",
+        "choices": ["A notification email will be sent to the Billing Administrator", "All services in the project will be suspended", "You have 12 hours before Google Suspends all services", "Nothing"],
+         "answer": "A notification email will be sent to the Billing Administrator",
+        "explanation": "Setting a budget alert at 100% means that once the total spending reaches $1000, a notification email is sent to the **Billing Administrator** and other configured recipients. However, this does not automatically suspend services. Google Cloud **does not** enforce spending limits based on budgets; it only provides alerts. To stop services from incurring additional charges, you must manually disable billing or use programmatic budget enforcement mechanisms."
+    },
+    {
+        "question": "As a Mobile Game Developer, you use Cloud Spanner for storing player profiles. Your operational team wants access to view and edit player profiles to support users. What should you do?",
+        "choices": ["You should grant Cloud Spanner Database User role to operational team group", "You should grant Cloud Spanner Database Reader role to operational team group", "You should grant Cloud Spanner Database Admin role to operational team group", "You should grant Cloud Spanner Database User role to all user accounts in the operational team"],
+         "answer": "You should grant Cloud Spanner Database User role to operational team group",
+        "explanation": "A principal with Cloud Spanner Database User role can: \n - read from and write to Cloud Spanner Database \n - execute SQL queries on the databse, including DML and Partitioned DML \n view and update schema for the database \n Lowest-level resources where you can grant this role: - database "
+    },
+    {
+        "question": "Which of these compute services users dont have to worry about infrastructure management ?",
+        "choices": ["Compute Engine", "Cloud Firestore", "App Engine", "Google Kubernetes Engine"],
+         "answer": "App Engine",
+        "explanation": "App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose form several popular languages, libraires and frameworks to develop your apps and then let App Engine take care of provisioning servers and scaling your app instances based on demand"
+    },
+    {
+        "question": "Which of these compute services users don't have to worry about infrastructure management",
+        "choices": ["Compute Engine", "Cloud Functions", "Google Kubernetes Engine", "Google Cloud Spanner"],
+         "answer": "Cloud Functions",
+        "explanation": "Cloud Functions is a lightweight compute solution for developers to create single-purpose, stand-alone functions that respond to Cloud events without the need to manage a server or runtime enviroment."
+    },
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    {
+        "question": "One of your applications is deployed to the GKE cluster as a Kubernetes workload with DaemonSets and is gaining popularity. You want to add more pods to your workload and want to make sure the cluster scales up and down automatically based on volume. What should you do ?",
+        "choices": ["You should create another identical Kubernetes workload and split traffic between the two workloads", "You should enable Horizontal Pod Autoscaling for the Kubernetes delpoyment", "You should perform a rolling update to modify machine type to a higher one", "You should enable autoscaling on Kubernetes Engine"],
+         "answer": "You should enable autoscaling on Kubernetes Engine",
+        "explanation": "DaemonSets are used for running one pod per node, so Horizontal Pod Autoscaling (HPA) does not apply to them. Instead, the best way to scale DaemonSets is by **enabling cluster autoscaling** in GKE, which adjusts the number of nodes dynamically based on resource demands. \n\n**Why Not the Other Options?**\n- **Creating another identical workload**: This does not address the need for automatic scaling.\n- **Enabling Horizontal Pod Autoscaling**: HPA is for Deployments, StatefulSets, and ReplicaSets, but does not work for DaemonSets.\n- **Performing a rolling update with a higher machine type**: While this might help with resource limits, it does not provide automatic scaling.\n\nThus, **enabling autoscaling on Kubernetes Engine is the correct approach** for scaling workloads that use DaemonSets."
+    },
+    {
+        "question": "As a Mobile Game Developer you want to launch a new mobile game that will be available to users around the world. Your game requires RDBMS for storing player profiles. Which storage service should you use to be able to scale to a gloabal audience with minimal configuration updates ?",
+        "choices": ["Cloud Datastore", "Cloud Firestore", "Cloud SQL", "Cloud Spanner"],
+         "answer": "Cloud Spanner",
+        "explanation": "Cloud Spanner is a fully managed, mission critical, relational database service that offers transactional consistency at global scale, automatic, synchronous replication for high availability and support for two SQL dialects: Google Standard SQL and PostgreSQL"
+    },
+    {
+        "question": "As a Cloud Engineer, you are migrating your workloab from on-premises delployment to Google Kubernetes Engine. You want to minimize costs. What should you do ?",
+        "choices": ["You should configure the needed capacity", "You should configure Autopilot in GKE to monitor node utilization and eliminate inactice nodes", "You should create several nodes using Compute Engine, add them to a Managed Instance Group, and set the scaling up or down depending on the workload", "You should scale individual nodes up and down with the Horizontal Pod Autoscaler"],
+         "answer": "You should configure Autopilot in GKE to monitor node utilization and eliminate inactice nodes",
+        "explanation": "Autopilot is a new mode of operation in Google Kubernetes Engine (GKE) that is designed to reduce the operational costs of managing clusters, optimize your clusters for productions, and yeild higher workloab availability"
+    },
+    {
+        "question": "You are creating a Google Kubernetes Engine (GKE) cluster with a cluster autoscaler feature enabled. You need to make sure that each node of the cluster will run a monitoring pod that sends container metrics to a third-party monitoring solution. What should you do?",
+        "choices": ["You should reference the monitoring pod in Deployment object", "You should refernce the monitoring pod in a cluster initializer at the GKE cluser creation time", "You should deploy the monitoring pod in a DaemonSet object", "You should deploy the monitoring pod in StatefulSet object"],
+         "answer": "You should deploy the monitoring pod in a DaemonSet object",
+        "explanation": "DaemonSets are used to ensure that a specific pod runs on every node in the cluster, which makes them the ideal choice for deploying a monitoring agent. This ensures that each node has a monitoring pod collecting and sending metrics.\n\n**Why Not the Other Options?**\n- **Deployment object**: A Deployment creates multiple pods based on replica count, but it does not guarantee that each node has a monitoring pod.\n- **Cluster initializer at GKE creation**: GKE does not provide a built-in initializer for automatically deploying monitoring pods.\n- **StatefulSet object**: StatefulSets are used for stateful applications requiring stable identities and persistent storage, which is unnecessary for monitoring pods.\n\nThus, **DaemonSet is the correct choice** as it ensures that the monitoring pod is deployed on every node in the cluster."
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
     {
         "question": "",
         "choices": ["", "", "", ""],
