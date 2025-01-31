@@ -1128,10 +1128,10 @@ const questions = [
         "explanation": "DaemonSets are used to ensure that a specific pod runs on every node in the cluster, which makes them the ideal choice for deploying a monitoring agent. This ensures that each node has a monitoring pod collecting and sending metrics.\n\n**Why Not the Other Options?**\n- **Deployment object**: A Deployment creates multiple pods based on replica count, but it does not guarantee that each node has a monitoring pod.\n- **Cluster initializer at GKE creation**: GKE does not provide a built-in initializer for automatically deploying monitoring pods.\n- **StatefulSet object**: StatefulSets are used for stateful applications requiring stable identities and persistent storage, which is unnecessary for monitoring pods.\n\nThus, **DaemonSet is the correct choice** as it ensures that the monitoring pod is deployed on every node in the cluster."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "As a Game Developer you deployed your horror game using App Engine in the europe-central2 region. After a while, you see that most your users live in Japan. You want to minimize latency and move this application deployment to asia-northeast1 region. What should you do?",
+        "choices": ["You should create a ticker to Google Support to change application deployment region in App Engine", "You should deploy a new app engine application in the same GCP project and set the region to asia-northeast1. Finally, remove the old App Engine application", "You should create a new GCP project, create a new App Engine application in the new GCP project and set its region to asia-northeast1. Finally, remove the old App Engine application", "You should update the default region to asia-northeast1 on the App Engine"],
+         "answer": "You should create a new GCP project, create a new App Engine application in the new GCP project and set its region to asia-northeast1. Finally, remove the old App Engine application",
+        "explanation": "App Engine regions **cannot be changed once set**. The only way to move an App Engine application to a new region is by **creating a new GCP project** and deploying the application there with the desired region.\n\n**Why Not the Other Options?**\n- **Creating a ticket to Google Support**: Google does not allow App Engine region changes even with support intervention.\n- **Deploying a new App Engine application in the same GCP project**: App Engine allows only **one application per project**, so you cannot deploy another App Engine application in a different region within the same project.\n- **Updating the default region**: This is not possible in App Engine once the region is set.\n\nThus, the correct approach is to **create a new GCP project, deploy App Engine in the new region, and then remove the old deployment.**"
     },
     {
         "question": "",
