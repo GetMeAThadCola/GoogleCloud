@@ -1147,20 +1147,6 @@ const questions = [
     },
 
 
-// Exam Topic Limit Reached
-
-
-
-
-
-
-
-
-
-
-
-    
-// Add More Questions
 ];
 
 let currentQuestionIndex = 0;
