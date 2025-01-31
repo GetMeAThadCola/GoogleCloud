@@ -1102,7 +1102,6 @@ const questions = [
          "answer": "Cloud Functions",
         "explanation": "Cloud Functions is a lightweight compute solution for developers to create single-purpose, stand-alone functions that respond to Cloud events without the need to manage a server or runtime enviroment."
     },
-    
     {
         "question": "One of your applications is deployed to the GKE cluster as a Kubernetes workload with DaemonSets and is gaining popularity. You want to add more pods to your workload and want to make sure the cluster scales up and down automatically based on volume. What should you do ?",
         "choices": ["You should create another identical Kubernetes workload and split traffic between the two workloads", "You should enable Horizontal Pod Autoscaling for the Kubernetes delpoyment", "You should perform a rolling update to modify machine type to a higher one", "You should enable autoscaling on Kubernetes Engine"],
@@ -1132,6 +1131,42 @@ const questions = [
         "choices": ["You should create a ticker to Google Support to change application deployment region in App Engine", "You should deploy a new app engine application in the same GCP project and set the region to asia-northeast1. Finally, remove the old App Engine application", "You should create a new GCP project, create a new App Engine application in the new GCP project and set its region to asia-northeast1. Finally, remove the old App Engine application", "You should update the default region to asia-northeast1 on the App Engine"],
          "answer": "You should create a new GCP project, create a new App Engine application in the new GCP project and set its region to asia-northeast1. Finally, remove the old App Engine application",
         "explanation": "App Engine regions **cannot be changed once set**. The only way to move an App Engine application to a new region is by **creating a new GCP project** and deploying the application there with the desired region.\n\n**Why Not the Other Options?**\n- **Creating a ticket to Google Support**: Google does not allow App Engine region changes even with support intervention.\n- **Deploying a new App Engine application in the same GCP project**: App Engine allows only **one application per project**, so you cannot deploy another App Engine application in a different region within the same project.\n- **Updating the default region**: This is not possible in App Engine once the region is set.\n\nThus, the correct approach is to **create a new GCP project, deploy App Engine in the new region, and then remove the old deployment.**"
+    },
+    {
+        "question": "You are creating a Google Kubernetes Engine (GKE) cluster with a cluster autoscaler feature enabled. You need to make sure that each node of the cluster will run a monitoring pod that sends container metrics to a third-party monitoring solutiuon. What should you do ? ",
+        "choices": ["You should reference the monitoring pod in a Deployment object", "You should reference the monitoring pod in cluster intializer at the GKE cluster creation time", "You should delpoy the monitoring pod in DaemonSet object", "You should deploy the monitoring pod in StatefulSet object"],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
     },
     {
         "question": "",
