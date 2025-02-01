@@ -1133,22 +1133,29 @@ const questions = [
         "explanation": "App Engine regions **cannot be changed once set**. The only way to move an App Engine application to a new region is by **creating a new GCP project** and deploying the application there with the desired region.\n\n**Why Not the Other Options?**\n- **Creating a ticket to Google Support**: Google does not allow App Engine region changes even with support intervention.\n- **Deploying a new App Engine application in the same GCP project**: App Engine allows only **one application per project**, so you cannot deploy another App Engine application in a different region within the same project.\n- **Updating the default region**: This is not possible in App Engine once the region is set.\n\nThus, the correct approach is to **create a new GCP project, deploy App Engine in the new region, and then remove the old deployment.**"
     },
     {
-        "question": "You are creating a Google Kubernetes Engine (GKE) cluster with a cluster autoscaler feature enabled. You need to make sure that each node of the cluster will run a monitoring pod that sends container metrics to a third-party monitoring solutiuon. What should you do ? ",
-        "choices": ["You should reference the monitoring pod in a Deployment object", "You should reference the monitoring pod in cluster intializer at the GKE cluster creation time", "You should delpoy the monitoring pod in DaemonSet object", "You should deploy the monitoring pod in StatefulSet object"],
-         "answer": "",
-        "explanation": ""
+        "question": "You are creating a Google Kubernetes Engine (GKE) cluster with a cluster autoscaler feature enabled. You need to make sure that each node of the cluster will run a monitoring pod that sends container metrics to a third-party monitoring solution. What should you do?",
+        "choices": [
+            "You should reference the monitoring pod in a Deployment object",
+            "You should reference the monitoring pod in cluster initializer at the GKE cluster creation time",
+            "You should deploy the monitoring pod in DaemonSet object",
+            "You should deploy the monitoring pod in StatefulSet object"
+        ],
+        "answer": "You should deploy the monitoring pod in DaemonSet object",
+        "explanation": "A DaemonSet ensures that a copy of the monitoring pod runs on every node in the cluster, which is required for this use case."
     },
+    
+
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "As a game developer, you deployed your horror game using App Engine in the europe-central2 region. After a while, you see that most of your users live in Japan. You want to minimize latency and move this application deployment to the asia-northeast1 region. What should you do?",
+        "choices": [
+        "You should create a ticket to Google's Support to change an application deployment region in App Engine",
+        "You should deploy a new App Engine application in the same GCP project and set the region to asia-northeast1. Finally, remove the old App Engine application.",
+        "You should create a new GCP project, create a new App Engine application in the new GCP project, and set its region to asia-northeast1. Finally, remove the old App Engine application.",
+        "You should update the default region to asia-northeast1 on the App Engine."
+        ],
+        "answer": "You should deploy a new App Engine application in the same GCP project and set the region to asia-northeast1. Finally, remove the old App Engine application.",
+        "explanation": "App Engine does not allow you to change the region of an existing application. To minimize latency, you must deploy a new instance of the application in the desired region (asia-northeast1) and remove the old one."
+
     },
     {
         "question": "",
