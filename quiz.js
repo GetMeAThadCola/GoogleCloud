@@ -1144,30 +1144,17 @@ const questions = [
         "explanation": "A DaemonSet ensures that a copy of the monitoring pod runs on every node in the cluster, which is required for this use case."
     },
     
-
     {
-        "question": "As a game developer, you deployed your horror game using App Engine in the europe-central2 region. After a while, you see that most of your users live in Japan. You want to minimize latency and move this application deployment to the asia-northeast1 region. What should you do?",
-        "choices": [
-        "You should create a ticket to Google's Support to change an application deployment region in App Engine",
-        "You should deploy a new App Engine application in the same GCP project and set the region to asia-northeast1. Finally, remove the old App Engine application.",
-        "You should create a new GCP project, create a new App Engine application in the new GCP project, and set its region to asia-northeast1. Finally, remove the old App Engine application.",
-        "You should update the default region to asia-northeast1 on the App Engine."
-        ],
-        "answer": "You should deploy a new App Engine application in the same GCP project and set the region to asia-northeast1. Finally, remove the old App Engine application.",
-        "explanation": "App Engine does not allow you to change the region of an existing application. To minimize latency, you must deploy a new instance of the application in the desired region (asia-northeast1) and remove the old one."
-
+        "question": "As Game Developer you deployed your horror game using App Engine in the europe-central2 region. After a while you see that most of your users live in Japan. You want to minimize latency and move this application deployment to asia-northeast1 region. What should you do ?",
+        "choices": ["You should create a ticket to Google Support to change application deployment region in App Engine", "You should deploy a new app engine application in the same GCP project and set region to asia-northeast 1. Finally, remove the old App Engine application.", "You should create a new GCP project, create a new App Engine application in the new GCP project and set its region to asia-northeast1. Finally, remove the old App Engine application.", "You should update the default region to asia-northeast1 on the App Engine"],
+         "answer": "You should create a new GCP project, create a new App Engine application in the new GCP project and set its region to asia-northeast1. Finally, remove the old App Engine application.",
+        "explanation": "App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your appp instances based based on demand"
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "Which storage service provides a MySQL, PostgreSQL or SQL Server database engines to GCP customers ?",
+        "choices": ["Cloud Bigtable", "Cloud Spanner", "BigQuery", "Cloud SQL"],
+         "answer": "Cloud SQL",
+        "explanation": "Cloud SQL is fully-managed database service service that helps you set up , maintain, manage and administer your relational databases on Google Cloud Platform. You can use Cloud SQL with MySQL, PostegreSQL or SQL Server. "
     },
     {
         "question": "",
