@@ -1168,17 +1168,78 @@ const questions = [
         "explanation": "The 'gcloud container clusters resize' command allows you to manually resize the cluster by specifying the desired number of nodes, directly increasing or decreasing the cluster size."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "Your application is running on Google Compute instance and you want to create multiple copies of this virtual machine to handle the traffic. What should you do?",
+        "choices": [
+            "You should create a snapshot of the compute engine instance disk and create instances from this snapshot to handle the traffic",
+            "You cannot do this in GCP",
+            "You should create a snapshot of the compute engine disk, create a custom image from the snapshot and create instances from this snapshot to handle the traffic",
+            "You should create a snapshot of the compute engine instance disk, create a custom image from the snapshot and create instances from this image to handle the traffic"
+        ],
+        "answer": "You should create a snapshot of the compute engine instance disk, create a custom image from the snapshot and create instances from this image to handle the traffic",
+        "explanation": "In Google Cloud Platform (GCP), to create multiple copies of a virtual machine, you can first take a snapshot of the disk attached to your compute engine instance. Then, you create a custom image from the snapshot, and you can use this custom image to create new instances. This allows you to scale your application by replicating the instance to handle more traffic."
     },
+    {
+        "question": "With Googles's best practices in mind, what type of roles should be used as the first choice tool for granting permissions in a GCP project ?",
+        "choices": ["Predefined roles", "Basic Roles", "Custom Roles"],
+         "answer": "Predefined roles",
+        "explanation": "IAM provides additional predefined roles that give granular access to specific cloud resources and prevent unwanted access to other resources. These roles are created and maintained by Google. google automatically updates their permissions as necessary, such as when google cloud adds new features or services"
+    },
+    {
+        "question": "As a project owner, you need your co-worker to delpoy a new verion of your social media ap to App Engine. Which IAM roles should you grant to your co-worker to meet Google's recommended practices ?",
+        "choices": ["App Engine Admin", "App Engine Viewer", "App Engine Code Viewer", "App Engine Delployer"],
+         "answer": "App Engine Delployer",
+        "explanation": "App Engine Deployer - \n read only access to all application configuration and settings \n To deploy new versions, you must have the Service Account User role on the App Engine default service account, and the Cloud Build Editor and Cloud Storage Object Admin roles on the project"
+    },
+
+    {
+        "question": "You are designing an application and you want to be sure that the containers are located as close to each other as possible, in order to minimize latency. Which design decision will you recommend?",
+        "choices": ["You should place the containers in the same cluster", "You should place the containers in the same pod", "You should give the containers the same labels", "You should place the containers in the same namespace"],
+         "answer": "You should place the containers in the same pod",
+        "explanation": "In Kubernetes, containers within the same pod share the same network namespace, which means they can communicate with each other using localhost. This reduces latency compared to containers placed in different pods or clusters. Placing containers in the same pod ensures they are as close as possible in terms of networking, helping to minimize latency."
+    },
+
+    {
+        "question": "You are working on your own project and want to control your expenses. You want to be automatically informed about project expenses so that you can take action when you get close to your limit. What should you do?",
+        "choices": ["Create a budget alert for the appropriate levels for your total monthly budget (for example: 50%, 90%, 100%)", "Set up a PayPal account with a monthly limit equate to your budget", "Set up a credit card with a monthly limit equal to your budget", "You can't automatically control your Google Cloud expenses"],
+         "answer": "Create a budget alert for the appropriate levels for your total monthly budget (for example: 50%, 90%, 100%)",
+        "explanation": "A budget alert enables you to track your actual Google Cloud spend againts your planned spend. After you've set a budget amount, you set budget alert threshold rules that are used to trigger email notifications. Budget alert emails help you stay informed about how your spend is tracking against your budget. you can also use budgets to autmoate cost control responses"
+    },
+
+    {
+        "question": "A mission-critical application is migrated to Google Kubernetes Engine from your on-premises data center and uses e2-standard-4 machine types. How can you deploy additional pods on e2-standard-32 machine types without causing application downtime ?",
+        "choices": ["You should update the existing cluster to add a new node pool with e2-standard-32 machine types and deploy the pods", "You should create a new cluster with two node pools - one with e2-standard-4 machines types and other with the e2-standard-32 machine types. Then deploy the application on this new cluster and remove the older one", "You should create a new cluster with node pool instances with e2-standard-32 machine types. Then deploy the application on the new cluster and remove the older one", "You should update the exisiting cluster to add a new node pool with e2-standard-32 machine types and deploy the pods"],
+         "answer": "You should create a new cluster with two node pools - one with e2-standard-4 machines types and other with the e2-standard-32 machine types. Then deploy the application on this new cluster and remove the older one",
+        "explanation": "By creating a new cluster with both e2-standard-4 and e2-standard-32 node pools, you can achieve high availability and distribute workloads across different machine types. This approach ensures that your application continues to function without downtime while migrating. Once the new cluster is deployed and the application is running, you can decommission the old cluster."
+    },
+
     {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
         "explanation": ""
     },
+
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+
 
 
 ];
