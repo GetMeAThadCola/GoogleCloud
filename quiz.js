@@ -1157,10 +1157,15 @@ const questions = [
         "explanation": "Cloud SQL is fully-managed database service service that helps you set up , maintain, manage and administer your relational databases on Google Cloud Platform. You can use Cloud SQL with MySQL, PostegreSQL or SQL Server. "
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "A Kubernetes cluster with 1 node-pool receives a lot of traffic and needs to grow. What should you do to add more nodes to this cluster?",
+        "choices": [
+            "You should edit the managed instance group of the cluster and increase the number of VMs by the desired number of nodes",
+            "You should edit the managed instance group of the cluster and enable autoscaling",
+            "You should use gcloud container clusters resize with the desired number of nodes",
+            "You should use kubectl container clusters resize with the desired number of nodes"
+        ],
+        "answer": "You should use gcloud container clusters resize with the desired number of nodes",
+        "explanation": "The 'gcloud container clusters resize' command allows you to manually resize the cluster by specifying the desired number of nodes, directly increasing or decreasing the cluster size."
     },
     {
         "question": "",
