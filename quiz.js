@@ -1213,10 +1213,10 @@ const questions = [
     },
 
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": ".... is the smallest, most basic deployable objects in Kubernetes. it represents a single instane of a running process in your cluster",
+        "choices": ["A Node...", "A Pod...", "A Container ...", "A ReplicaSet ..."],
+         "answer": "A Pod...",
+        "explanation": "Pods are the smallest, most basic deployable objects in Kubernetes. A Pod represents a single instance of"
     },
 
     {
