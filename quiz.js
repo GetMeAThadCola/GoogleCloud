@@ -1220,17 +1220,22 @@ const questions = [
     },
 
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "You are deploying an application to App Engine and want to scale the number of instances based on request rate. You need at 3 least 3 unoccupied instances at all times. What type of scaling should you use?",
+        "choices": ["Basic Scaling with min_instances set to 3", "Manual Scaling with 3 instances", "Automatic Scaling with min_idle instances set to 3", "Basic Scaling with max_instances set to 3"],
+         "answer": "Automatic Scaling with min_idle instances set to 3",
+        "explanation": "You will need to set up automatic scaling to do this"
     },
 
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "A web application is running using a Managed Instance Group based on an instance template. You modified the startup script in this template and want to propagate these changes to all instances in this MIG. What should you do to minimize effort and cost while maintaining available capacity?",
+        "choices": [
+            "You should perform a rolling-action replace with max unavailable set to 0 and max-surge set to 1",
+            "You should perform a rolling-action start-update with max-unavailable set to 1 and max-surge set to 0",
+            "You should remove instances in the managed instance group one at a time and rely on auto-healing to provision an additional instance",
+            "You should create a new managed instance group based on a new template. Add the group as a backend service to the load balancer. When all instances in the new managed instance group are healthy, remove the old managed instance group"
+        ],
+        "answer": "You should perform a rolling-action replace with max unavailable set to 0 and max-surge set to 1",
+        "explanation": "Rolling-action replace with max-unavailable set to 0 ensures that all existing instances remain operational while new ones are created. Max-surge set to 1 allows new instances to be added before removing old ones, ensuring minimal effort and cost while maintaining availability."
     },
 
     {
