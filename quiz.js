@@ -1239,11 +1239,85 @@ const questions = [
     },
 
     {
+        "question": "As a Cloud Engineer, you need to design an IoT application that requires data storage up to 30 petabytes. Your application must support fast reads and writes. Your data schema is rather simple and you want to use the most economical soultion for this. What should you do ?",
+        "choices": ["You should use BigQuery, and implement the business logic in SQL", "You should store the data in Cloud Storage", "You should store the data in Cloud Bigtable", "You should store the data Cloud Spanner, and add an in-memory cahce for speed"],
+         "answer": "You should store the data in Cloud Bigtable",
+        "explanation": "Bigtable is correct because it provides high-speed reads and writes, supports a simple schema, and is cost-effective. Cloud Spanner is not correct because it would not be the most economical solution. Cloud Storage is not correct because object oritented storage is not a good fit for reading and writing small pieces of data. BigQuery is not correct because it doesn't provide the high-speed reads and writes required by IoT"
+    },
+    {
+        "question": "You are using BigQuery with Cloud Shell and want to list all BigQuery jobs for a project named bigquery-course-257021. Before that you need to properly configure Cloud Shell to set this project as the default for the bq command line tool. Which command should you use ?",
+        "choices": ["gcloud config set project bigquery-course-257021", "gcloud set project bigquery-course-257021", "gcloud config project bigquery-course-257021", "bq config set project bigquery-course-257021"],
+         "answer": "gcloud config set project bigquery-course-257021",
+        "explanation": "glcoud config set sets the specified property in your active configuration only. A property governs the behavior of a specific aspect of Google Cloud CLI such as the service account to use or the verbosity level of logs \n To set the project property you can run: \n glcoud config set project myProject"
+    },
+
+    {
+        "question": "Which storage service should you use for semi-structured application key-value data ?",
+        "choices": ["Cloud Storage", "Cloud SQL", "Cloud Spanner", "BigQuery", "Cloud Datastore", "Cloud Bigtable"],
+         "answer": "Cloud Datastore",
+        "explanation": "Cloud Datastore is a NoSQL document database built for automatic scaling, high performance, and ease of application development"
+    },
+
+    {
+        "question": "Select the true statements about the difference between a pod and a container.",
+        "choices": ["A pod contains one or more containers", "There is no difference between pods and containers", "A pod cannot contain any container", "A container contains one or more pods"],
+         "answer": "A pod contains one or more containers",
+        "explanation": "Pods are the smallest, most basic delpoyable objects in Kubernetes. A Pod represents a single instance of a running process in your cluster. Pods contain on or more containers such as Docker containers. When a Pod runs mulitple containers, the containers are managed as a single entity and share the Pod's resources. Generally, running multiple containers in a single Pod is an advanced use case"
+    },
+    {
+        "question": "There are three projects in your organization for development, testing and production. Your manager wants to monitor resource utilaztion (RAM, disk, network, CPU) for all applications in these three projects. What should you do?",
+        "choices": ["In Cloud Monitoring, share charts from development, testing and production projects", "You cannot combine metrics from different projects", "You should create a Cloud Monitoring workspace in the production project and add development and testing projects to it", "You should use the default Cloud Monitoring dashboards in all the projects"],
+         "answer": "You should create a Cloud Monitoring workspace in the production project and add development and testing projects to it",
+        "explanation": "Cloud Monitoring collects metrics, events, and metadata from Google Cloud, Amazon Web Services (AWS), hosted uptime probes, and application instrumentation. Using the BindPlane service, you can also collect this data from over 150 common application components, on-premises systems, and hybrid cloud systems. Google Cloud operations suite ingests that data and generates insights via dashboards, charts and alerts"
+    },
+
+    {
+        "question": "You need to manage multiple user accounts with the same access configuration in GCP. With Google's best practices in mind, how should you do that?",
+        "choices": ["You should grant the intended roles to each individual user account", "In this case, you should always create a custom role", "You should use Google groups. Put each individual user account into the group, and grant the intended roles to the group instrad of individual user accounts"],
+         "answer": "You should use Google groups. Put each individual user account into the group, and grant the intended roles to the group instrad of individual user accounts",
+        "explanation": "Google groups can help you manage users at scale. Each member of a Google group inherits the Identity and Access Management (IAM) roles granted to that group. This inheritance means that you can use a group's membership to manage users' roles instead of granting IAM roles to individual users"
+    },
+
+    {
+        "question": "As a new Cloud Engineer, you need to manage your first GCP project. The project will involve product owners, developers and testers . You need to make sure that only specific members of the development team have access to sensitive information (PII data) To do this, you want to assign the appropriate IAM roles. What should you do",
+        "choices": ["You should create groups. Assign a Cutom role to each group, including those who should have access to senstive data. Then assign users to groups", "You should create groups. Assign an IAM Predefined role to each group as required, including those who should have access to sensitive data. Then assign users to groups.", "You should create groups. Assign a basic role to each group, and then assign users to groups", "You should assign a basic role to each user"],
+         "answer": "You should create groups. Assign an IAM Predefined role to each group as required, including those who should have access to sensitive data. Then assign users to groups.",
+        "explanation": "Google's best practice is to use groups rather than assign roles to each user. Also, creating and maintaining Custom roles will require more maintenance than using Predefined roles"
+    },
+    {
+        "question": "You work in a company that processes large amounts of IoT data (time-stamped), which can be petabytes in size. You need to write and change data at high speed. Which Google Cloud product should you use?",
+        "choices": ["Cloud Bigtable", "BigQuery", "Cloud Datastore", "Cloud Storage"],
+         "answer": "Cloud Bigtable",
+        "explanation": "Cloud Bigtable is Google's fully managed NoSQL Big Data database service. Cloud Bigtable is a sparsely populated table that can scale to billions of rows and thousands of columns, enabling you you to store terabytes or even petabytes of data. A single value in each row is indexed; this value is known as the row key. Bigtable is ideal for storing very large amounts of single-keyed data with very low latency. It supports high read and write throughput at low latency, and it is an ideal data source for MapReduce operations."
+    },
+    {
+        "question": "A web application is running on App Engine. You created an update for this application and want to deploy this update wihtout impacting users. If this update fails, you want to be able to roll back as quickly a possible. What should you do?",
+        "choices": ["You should deploy the update as the same version that is currently running. If the updae fails, redeploy your older version using the same version identifier.", "You should deploy the update as the same version that is currently running because you are sure it won't fail", "You should notify your users of an upcoming maintenance window and ask them not to use your application during that window. Then, deploy the update in tht maintenance window.", "You should deploy the update as a new version, then migrate traffic from the current version to the new version. If it fails, migrate the traffic back to your older version"],
+         "answer": "You should deploy the update as a new version, then migrate traffic from the current version to the new version. If it fails, migrate the traffic back to your older version",
+        "explanation": "App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand."
+    },
+    {
         "question": "",
         "choices": ["", "", "", ""],
          "answer": "",
         "explanation": ""
     },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+
+
+
+
 
 
 
