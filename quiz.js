@@ -1297,16 +1297,88 @@ const questions = [
         "explanation": "App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "In BigQuery, you want to run an important query that can return a lot of records. You want to find out how much it will cost to run the query. You are using on-demand pricing. What should you do?",
+        "choices": [
+            "You should run a SELECT COUNT (*) to get an idea of how many records your query will look through. Then convert that number of rows to dollars using the Pricing Calculator",
+            "You cannot make an estimate with the information provided",
+            "You should arrange to switch to flat-rate pricing for this query, then move back to on-demand",
+            "You should use the command line to run a dry run query to estimate the number of bytes read. Then convert that bytes estimate to dollars using the Pricing Calculator"
+        ],
+        "answer": "You should use the command line to run a dry run query to estimate the number of bytes read. Then convert that bytes estimate to dollars using the Pricing Calculator",
+        "explanation": "A dry run query in BigQuery allows you to estimate the number of bytes that will be processed without actually running the query. You can then use the Google Cloud Pricing Calculator to convert the bytes estimate into a cost estimate based on on-demand pricing."
+    },
+    
+    {
+        "question": "You want to assign GCP accounts for new employees. Is it good practice for new GCP users to start working with GCP using a Gmail account.",
+        "choices": ["It isn't possible to say clearly, it depends on the specific case", "No For example, if someone leaves your organization, there is no centralized way to remove thier access to you cloud resources immediately", "Yes, it's a good practice"],
+         "answer": "No For example, if someone leaves your organization, there is no centralized way to remove thier access to you cloud resources immediately",
+        "explanation": "Using personal Gmail accounts for GCP access is not recommended because it lacks centralized management. Organizations should use Google Workspace accounts instead, as they allow administrators to manage access centrally, enforce security policies, and revoke access immediately when an employee leaves."
     },
     {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
+        "question": "Before you migrate your on-premises workload to the Google Cloud, there are a few questions you need to answer. For example you need to specify if your application is stateful. What does it mean ?",
+        "choices": ["An application is stateful when stores certain data, such as the client or session ID, until that data is no longer necessary", "An application is stateless when doesn't need to store any client, transaction, or session data", "Every application deployed locally is stateful", "Each application deployed in the cloud is stateful"],
+         "answer": "An application is stateful when stores certain data, such as the client or session ID, until that data is no longer necessary",
+        "explanation": "A stateful application stores certain data, such as the client or session ID, until that data is no longer necessary. For example, in an online shopping app, the shopping cart service might store details of items that are added or removed as the user continues shopping, and persist the final cart state when the user starts the check-out process"
+    },
+    {
+        "question": "Your company stores PII of customers in a multi-regional Cloud Storage bucket. Your compliance department has asked you to record all operations/requests on this bucket. What should you do?",
+        "choices": [
+            "You should turn on data access audit logging in Cloud Storage to record this information",
+            "You should enable the default Cloud Storage service account exclusive access to read all operations and record them",
+            "You should use the Identity-Aware Proxy API to record this information",
+            "You should use the Data Loss Prevention API to record this information"
+        ],
+        "answer": "You should turn on data access audit logging in Cloud Storage to record this information",
+        "explanation": "Cloud Audit Logs provide Data Access audit logging, which records all read and write operations performed on Cloud Storage buckets. This is the recommended approach for tracking access to sensitive data and ensuring compliance with regulatory requirements."
+    },
+    
+    {
+        "question": "In your company, every developer has a dedicated development GCP project linked to a central billing account. You are asked to set alerts whenever any developer spends more than $500 per month. What should you do?",
+        "choices": [
+            "You should set up a single budget for all development projects. Then set an alert for the budget when expenses exceed $500 multiplied by the number of developers",
+            "You should set up a single budget for all development projects. Then, set an alert for the budget when expenses exceed $500",
+            "You should set up a budget for each development project. Then set an alert for each budget when expenses exceed $500",
+            "Export billing data from all development projects to a single BigQuery dataset. Use a Data Studio dashboard to plot expenses"
+        ],
+        "answer": "You should set up a budget for each development project. Then set an alert for each budget when expenses exceed $500",
+        "explanation": "The best approach is to set up a budget for each development project because each developer has a dedicated project. This ensures that individual spending is monitored effectively, and alerts can be triggered when a specific project exceeds the $500 threshold. Using a single budget for all projects would not allow per-developer tracking."
+    },
+    
+    {
+        "question": "You have a Dockerfile that you need to deploy on Kubernetes Engine. What should you do?",
+        "choices": [
+            "You should create a docker image from the Dockerfile and upload it to Cloud Storage. Create a Deployment YAML file to point to that image. Use kubectl to create the deployment with that file",
+            "You should use kubectl app deploy <dockerfilename> command",
+            "You should use gcloud app deploy <dockerfilename> command",
+            "You should create a docker image from the Dockerfile and upload it to Container Registry. Create a Deployment YAML file to point to that image. Use kubectl to create the deployment with that file"
+        ],
+        "answer": "You should create a docker image from the Dockerfile and upload it to Container Registry. Create a Deployment YAML file to point to that image. Use kubectl to create the deployment with that file",
+        "explanation": "In Kubernetes Engine, container images need to be stored in a container registry before they can be deployed. The best practice is to build a Docker image from the Dockerfile, push it to Google Container Registry (or Artifact Registry), and reference it in a Deployment YAML file. Then, use kubectl to apply the deployment."
+    },
+    
+    {
+        "question": "You need to create a Kubernetes Engine cluster to deploy multiple pods and use BigQuery to store all container logs for later analysis. What solution should you apply to follow Google's best practices?",
+        "choices": [
+            "The only solution is to develop a custom add-on that uses the Cloud Logging API and BigQuery API",
+            "You should use the Cloud Logging export feature to create a sink to Cloud Storage then create a Cloud Dataflow job that imports log files from Cloud Storage to BigQuery",
+            "Enable Cloud Monitoring when creating a Kubernetes Engine cluster",
+            "Enable Cloud Logging when creating a Kubernetes Engine cluster"
+        ],
+        "answer": "Enable Cloud Logging when creating a Kubernetes Engine cluster",
+        "explanation": "The best practice is to enable Cloud Logging when creating a Kubernetes Engine cluster. Cloud Logging allows you to capture logs from all pods and nodes in your cluster. To store logs in BigQuery for analysis, you can configure a log sink to export logs from Cloud Logging to BigQuery. This approach follows Google's recommended best practices and ensures efficient log management."
+    },
+    
+    {
+        "question": "What is the minimum number of IP addresses that a VM instance needs in GCP?",
+        "choices": ["A virtual machine instance doesn't require any IP address", "A virtual machine need two IPs (internal and external)", "A virtual machine needs 3 Ip addresses (two internal and one external)", "A virtual machine instance only needs one IP address (internal IP address)"],
+         "answer": "A virtual machine instance only needs one IP address (internal IP address)",
+        "explanation": "Many Cloud resources can have internal IP addresses and external IP adresses. Instances use these addresses to communicate wiht other Google Cloud resources and external systems. For example, you can assign an internal and external IP address to Compute Engine virtual machone (VM) instances"
+    },
+    {
+        "question": "A regular batch job transfers customer data from a CRM system to BigQuery dataset and uses several virtual machines. You can tolerate some virtual machines going down. What should you do to reduce the costs of this job ?",
+        "choices": ["You should use a fleet of e2-micro instances behind a Managed Instance Group with autoscaling enabled", "You should only use e2-standard-32 instances", "You should use preemptible compute engine instances", "You should only use e2-micro instances"],
+         "answer": "You should use preemptible compute engine instances",
+        "explanation": "Preemptible VM instances are available at much lower price- a 60-91% discount - compared to the price of standard VMs. However, Compute Engine might stop (preempt) these instances if it needs to reclaim the compute capacity for allocation to other VMs. Preemptible instances use excess Compute Engine capacity, so thier availability varies with usage"
     },
     {
         "question": "",
