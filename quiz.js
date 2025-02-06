@@ -861,7 +861,7 @@ const questions = [
     {
         "question": "You create a new Google Kubernetes Engine (GKE) cluster and want to make sure that it always runs a supported and stable version of Kubernetes. What should you do?",
         "choices": ["A. Enable the Node Auto-Repair feature for your GKE cluster.", "B. Enable the Node Auto-Upgrades feature for your GKE cluster", "C. Select the latest available cluster version for your GKE cluster.", "D. Select ג€Container-Optimized OS (cos)ג€ as a node image for your GKE cluster."],
-         "answer": "B. Enable the Node Auto-Upgrades feature for your GKE cluster.",
+         "answer": "B. Enable the Node Auto-Upgrades feature for your GKE cluster",
         "explanation": "Answer B is correct. Google Kubernetes Engine (GKE) supports multiple versions of Kubernetes, and new versions are regularly released. To ensure that your GKE cluster runs a supported and stable version of Kubernetes, it is recommended to enable the Node Auto-Upgrades feature. This feature automatically upgrades the Kubernetes version of each node in the cluster to the latest stable version."
     },    
     {
@@ -1225,7 +1225,6 @@ const questions = [
          "answer": "Automatic Scaling with min_idle instances set to 3",
         "explanation": "You will need to set up automatic scaling to do this"
     },
-
     {
         "question": "A web application is running using a Managed Instance Group based on an instance template. You modified the startup script in this template and want to propagate these changes to all instances in this MIG. What should you do to minimize effort and cost while maintaining available capacity?",
         "choices": [
@@ -1237,7 +1236,6 @@ const questions = [
         "answer": "You should perform a rolling-action replace with max unavailable set to 0 and max-surge set to 1",
         "explanation": "Rolling-action replace with max-unavailable set to 0 ensures that all existing instances remain operational while new ones are created. Max-surge set to 1 allows new instances to be added before removing old ones, ensuring minimal effort and cost while maintaining availability."
     },
-
     {
         "question": "As a Cloud Engineer, you need to design an IoT application that requires data storage up to 30 petabytes. Your application must support fast reads and writes. Your data schema is rather simple and you want to use the most economical soultion for this. What should you do ?",
         "choices": ["You should use BigQuery, and implement the business logic in SQL", "You should store the data in Cloud Storage", "You should store the data in Cloud Bigtable", "You should store the data Cloud Spanner, and add an in-memory cahce for speed"],
@@ -1386,13 +1384,41 @@ const questions = [
          "answer": "",
         "explanation": ""
     },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+
+
+
+<<<<<<< HEAD
+
+=======
 
 
 
 
-
-
-
+>>>>>>> 41beae804a9ce47611692360a5c03be5ec2643f8
 ];
 
 let currentQuestionIndex = 0;
