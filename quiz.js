@@ -1411,14 +1411,6 @@ const questions = [
 
 
 
-<<<<<<< HEAD
-
-=======
-
-
-
-
->>>>>>> 41beae804a9ce47611692360a5c03be5ec2643f8
 ];
 
 let currentQuestionIndex = 0;
