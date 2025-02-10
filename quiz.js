@@ -453,10 +453,16 @@ const questions = [
     },
     {
         "question": "Your team is building a cost-effective Disaster Recovery solution for your company. You are tasked to archive 5 TB worth of data in Cloud Storage that is only accessed quarterly. What should you do?",
-        "choices": ["Use the Coldline Storage class to store the data.", "", "", ""],
-         "answer": "Use the Coldline Storage class to store the data.",
-        "explanation": "Standard Storage is best for data that is frequently accessed (“hot” data) and/or stored for only brief periods of time. Nearline Storage is a low-cost, highly durable storage service for storing infrequently accessed data. Nearline Storage is a better choice than Standard Storage in scenarios where slightly lower availability, a 30-day minimum storage duration, and costs for data access are acceptable trade-offs for lowered at-rest storage costs. Nearline Storage is ideal for data you plan to read or modify on average once per month or less. For example, if you want to continuously add files to Cloud Storage and plan to access those files once a month for analysis, Nearline Storage is a great choice. Coldline Storage is a very low-cost, highly durable storage service for storing infrequently accessed data. Coldline Storage is a better choice than Standard Storage or Nearline Storage in scenarios where slightly lower availability, a 90-day minimum storage duration, and higher costs for data access are acceptable trade-offs for lowered at-rest storage costs. Archive Storage is the lowest-cost, highly durable storage service for data archiving, online backup, and disaster recovery. Unlike the “coldest” storage services offered by other Cloud providers, your data is available within milliseconds, not hours or days."
+        "choices": [
+            "Use the Coldline Storage class to store the data.",
+            "Use the Standard Storage class to store the data.",
+            "Use the Nearline Storage class to store the data.",
+            "Use the Archive Storage class to store the data."
+        ],
+        "answer": "Use the Coldline Storage class to store the data.",
+        "explanation": "Coldline Storage is a very low-cost, highly durable storage service designed for data that is infrequently accessed. It is a better choice than Standard or Nearline Storage when lower availability, a 90-day minimum storage duration, and higher data access costs are acceptable trade-offs for lower storage costs. Since the data is accessed quarterly, Coldline Storage is the most suitable and cost-effective option for this scenario."
     },
+    
     {
         "question": "You are asked to deploy a Node.js application in your company’s GCP environment. The application must run every time an object is deleted on a specific Cloud Storage bucket. You want to follow Google-recommended best practices. What should you do?",
         "choices": ["Deploy your application to Google Kubernetes Engine (GKE). Configure a cron job to trigger the application using Cloud Pub/Sub.", "Deploy your code to Google Cloud Functions. Set a Cloud Storage trigger when an object is deleted from your bucket.", "Create a batch job with your code by using Cloud Dataflow. Configure the bucket as a data source.", "Utilize App Engine and configure Cloud Scheduler to trigger the application using a Pub/Sub subscription."],
