@@ -1390,39 +1390,6 @@ const questions = [
          "answer": "You should use preemptible compute engine instances",
         "explanation": "Preemptible VM instances are available at much lower price- a 60-91% discount - compared to the price of standard VMs. However, Compute Engine might stop (preempt) these instances if it needs to reclaim the compute capacity for allocation to other VMs. Preemptible instances use excess Compute Engine capacity, so thier availability varies with usage"
     },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-    {
-        "question": "",
-        "choices": ["", "", "", ""],
-         "answer": "",
-        "explanation": ""
-    },
-
-
-
 ];
 
 let currentQuestionIndex = 0;
