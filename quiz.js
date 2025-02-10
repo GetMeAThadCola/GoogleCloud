@@ -330,10 +330,16 @@ const questions = [
     },
     {
         "question": "Category: ACE – Deploying and Implementing a Cloud Solution. You plan to implement new changes to a previous production deployment using the Google Cloud Deployment Manager. You want to achieve this without any resource downtime during the deployment. What command should you utilize to accomplish this?",
-        "choices": ["gcloud deployment-manager deployments update --config {deployment-config-path}", "", "", ""],
-         "answer": "gcloud deployment-manager deployments update --config {deployment-config-path}",
-        "explanation": "The gcloud deployment-manager deployments update command updates a deployment based on a provided config file."
+        "choices": [
+            "gcloud deployment-manager deployments update --config {deployment-config-path}",
+            "gcloud deployment-manager deployments create --config {deployment-config-path}",
+            "gcloud deployment-manager deployments cancel-preview --config {deployment-config-path}",
+            "gcloud deployment-manager deployments delete --config {deployment-config-path}"
+        ],
+        "answer": "gcloud deployment-manager deployments update --config {deployment-config-path}",
+        "explanation": "The gcloud deployment-manager deployments update command updates a deployment based on a provided config file, ensuring that existing resources are modified without downtime."
     },
+    
     {
         "question": "You are working as a Cloud Security Officer in your company. You are asked to log all read requests and activities on your Cloud Storage bucket where you store all of the company’s sensitive data. You need to enable this feature as soon as possible because this is also a compliance requirement that will be checked on the next audit. What should you do?",
         "choices": ["Enable Object Versioning on the bucket.", "Enable Data Access audit logs for Cloud Storage", "Enable Identity-Aware Proxy feature on the Cloud Storage.", "Enable Certificate Authority (CA) Service on the bucket."],
