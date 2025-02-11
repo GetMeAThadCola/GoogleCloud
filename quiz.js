@@ -825,7 +825,7 @@ const questions = [
     {
         "question": "You are creating a Google Kubernetes Engine (GKE) cluster with a cluster autoscaler feature enabled. You need to make sure that each node of the cluster will run a monitoring pod that sends container metrics to a third-party monitoring solution. What should you do?",
         "choices": ["A. Deploy the monitoring pod in a StatefulSet object.", "B. Deploy the monitoring pod in a DaemonSet object. ", "C. Reference the monitoring pod in a Deployment object.", "D. Reference the monitoring pod in a cluster initializer at the GKE cluster creation time."],
-         "answer": "B. Deploy the monitoring pod in a DaemonSet object.",
+         "answer": "B. Deploy the monitoring pod in a DaemonSet object. ",
         "explanation": "Some typical uses of a DaemonSet are:running a cluster storage daemon on every node running a logs collection daemon on every node running a node monitoring daemon on every node"
     },
     {
