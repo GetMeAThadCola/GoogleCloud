@@ -1390,6 +1390,55 @@ const questions = [
          "answer": "You should use preemptible compute engine instances",
         "explanation": "Preemptible VM instances are available at much lower price- a 60-91% discount - compared to the price of standard VMs. However, Compute Engine might stop (preempt) these instances if it needs to reclaim the compute capacity for allocation to other VMs. Preemptible instances use excess Compute Engine capacity, so thier availability varies with usage"
     },
+    {
+        "question": "Every Employee of your compnay has a Google account. Your operational team needs to manage a large amount of instances on Compute Engine. Each memeber of this team needs only administrative access to the servers. Your security team wants to ensure that the deployment of crednetials is operationally efficient and must be able to determine who acceseed a given instance",
+        "choices": ["Generate a new SSH key pair. Give the private key to each memeber of your team. Configure the puiblic key in the metadata of each instance", "Ask each member to generate a new SSH key pair and send you thier public key. Use a configuration management tool to deploy those keys on each instance", "Ask each member of the team to generate a new SSH key pair and to add the public key to their Google account. Grant the compute.osAdminLogin role to the Google group corresponding to this team", "Generate a new SSH key pair. Give them private key to each memeber of your team. Configure the public key as a project-wide public SSH key in your Cloud Platform project and allow project-wide public SSH keys on each instance"],
+         "answer": "Ask each member of the team to generate a new SSH key pair and to add the public key to their Google account. Grant the compute.osAdminLogin role to the Google group corresponding to this team",
+        "explanation": "You cannot generate user private keys, They have to generate their own keys. b does not grant the admin role needed"
+    },
+    {
+        "question": "You want to select and configure a cost-effective solution for realtional data on Google Cloud Platform. You are working with a small set of operational data in one geographical location. You need to support point-in-time recovery. What should you do?",
+        "choices": ["Select Cloud SQL. Verify that the enable binary logging option is selected", "Select Cloud SQL. Select the create failover replicas options", "Select Cloud Spanner. Set up your instance with 2 nodes", "Select Cloud Spanner. Set up your instance as multi-regional"],
+         "answer": "Select Cloud SQL. Verify that the enable binary logging option is selected",
+        "explanation": "Cloud SQL is suitable for small sets and as per google documentation, enabling binary login grants the activity of the point-in-time recovery"
+    },
+    {
+        "question": "You want to configure autohealing for network load balancing for a group of Compute Engine instances that run in multiple zones, using the fewest steps possible You need to configure re-creation of VMs if they are unresponsive after 3 attempts of 10 seconds each. What should you do ?",
+        "choices": ["Create an HTTP load balancer with a backend configuration that references an exisiting instance group. Set the health check to healthy", "Create a HTTP load balancer with a backen configuration that references an exisiting instance group. define a balancing mode and set the maximum RPS to 10", "Create a manged instance group. Set the Autohealing health check to healthy (HTTP)", "Create a managed instance group. Verify that the autoscaling setting is on"],
+         "answer": "Create a manged instance group. Set the Autohealing health check to healthy (HTTP)",
+        "explanation": "Autohealing allows the VM recreating instances when needed. If you do not select a health check, Compute engine will recreate VM instances only when they are not running. In this case we need to re-creat Vms for a specific health citeria of the HTTP"
+    },
+    {
+        "question": "You are using mulitple configurations for gcloud. You want to review the configured Kuberenetes Engline cluster of an inactive configuration using the fewest possible steps. What should you do ?",
+        "choices": ["A gcloud config configuratuions describe to review the output", "Use gcloud config configurations activate and gcloud config list to review the output", "Use kubectl config get-contexts to review the output", "Use kubectl config use-context and kubectl config view to review the output"],
+         "answer": "Use kubectl config use-context and kubectl config view to review the output",
+        "explanation": "Review the configured Kubernetes Engine cluster of a inactive configuration: \n kubectl config set-context \n kubectl config view"
+    },
+    {
+        "question": "Your company uses Cloud Storage to store application backup files for disaster recovery purposes. You want to follow Google's recomended practices. What storage option should you choose ? ",
+        "choices": ["Multi-Regional Storage", "Regional Storage", "Nearline Storage", "Coldine Storage"],
+         "answer": "Coldine Storage",
+        "explanation": "- Nearline is for files accessed at most, once a month \n -Coldline is for files accessed once a quater and has a 90-days-minimum storage duration \n -Archive for data accesed less tahn once a year (would be ideal for the question but is nto an option)"
+    },
+    {
+        "question": "You need a dynamic way of provisioning VMs on Compute Engine. The exact speciifcations will be dedicated configuration file. You want to use Google's recommeneded practices. Which method should you choose ?",
+        "choices": ["Deployment Manager", "", "", ""],
+         "answer": "Deployment Manager",
+        "explanation": "Question is about dynamic way to provision VM, it can be achieved by Deployment manager or by using terrraform. MIG is creating mulitple instance based on template by loadbalancing"
+    },
+    {
+        "question": "You have a single binary application that you want to run on Google Cloud Platform. You decided to automatically scale the application based on the underlying infrastructure CPU usage. Your organizational poliices require you to use virtual machines direclty. you need to ensure that the application scaling is operationally efficient and completed as quickly as possible. What should you do ?",
+        "choices": ["Create a Google Kubernetes Engine cluster, and use horizontal pod auto scaling to scale the application", "Create an instance template, and use the template in a managed instance group with autoscaling configured", "Create an instance template, and use the template in a mangfed instance group that scales up or down based on the time of day", "Use a set of third party tools to buuild automation around scaling the appplication upo and down, based on Stackdrtiver CPU usage monitoring"],
+         "answer": "Create an instance template, and use the template in a managed instance group with autoscaling configured",
+        "explanation": "Correct answer is B as a managed instance group can help use virtual machines directly and with autoscaling can scale per the demand"
+    },
+    {
+        "question": "",
+        "choices": ["", "", "", ""],
+         "answer": "",
+        "explanation": ""
+    },
+
 ];
 
 let currentQuestionIndex = 0;
